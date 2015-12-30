@@ -35,8 +35,12 @@ namespace Geeky.Master.Controllers
         }
 
         // GET: GeekyRoles
-        public IActionResult Index()
+        public IActionResult Index(RolesMessageId? message = null)
         {
+            ViewData["StatusMessage"] =
+                message == RolesMessageId.ConcurrecyError ? "That record has been changed."
+                : "";
+
             var roles = _roleManager.Roles;
             var listr = new List<GeekyRole>();
 
@@ -115,14 +119,12 @@ namespace Geeky.Master.Controllers
         {
             if (ModelState.IsValid)
             {
-                geekyRole.ConcurrencyStamp = Guid.NewGuid().ToString();
-               var res = _roleManager.UpdateAsync(geekyRole).Result;
+                var res = _roleManager.UpdateAsync(geekyRole).Result;
                 if (res.Succeeded)
                 {
                     return RedirectToAction("Index");
-
                 }
-                return View();
+                return RedirectToAction("Index", new { Message = RolesMessageId.ConcurrecyError });
             }
             return View();
         }
@@ -154,5 +156,10 @@ namespace Geeky.Master.Controllers
             _roleManager.DeleteAsync(geekyRole);
             return RedirectToAction("Index");
         }
+    }
+
+    public enum RolesMessageId
+    {
+        ConcurrecyError,
     }
 }
