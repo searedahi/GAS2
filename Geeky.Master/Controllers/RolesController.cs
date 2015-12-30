@@ -3,34 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Mvc;
 using Geeky.Master.Models;
-using Geeky.Master.Services;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.Logging;
 
 namespace Geeky.Master.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, RolesAdmin")]
     public class RolesController : Controller
     {
-        private readonly UserManager<GeekyUser> _userManager;
         private readonly RoleManager<GeekyRole> _roleManager;
 
-        private readonly IEmailSender _emailSender;
-        private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
         public RolesController(
-        UserManager<GeekyUser> userManager,
         RoleManager<GeekyRole> roleManager,
-        IEmailSender emailSender,
-        ISmsSender smsSender,
         ILoggerFactory loggerFactory)
         {
-            _userManager = userManager;
             _roleManager = roleManager;
-            _emailSender = emailSender;
-            _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<RolesController>();
         }
 
@@ -38,7 +28,7 @@ namespace Geeky.Master.Controllers
         public IActionResult Index(RolesMessageId? message = null)
         {
             ViewData["StatusMessage"] =
-                message == RolesMessageId.ConcurrecyError ? "That record has been changed."
+                message == RolesMessageId.ConcurrecyError ? "That role has has been changed already."
                 : "";
 
             var roles = _roleManager.Roles;

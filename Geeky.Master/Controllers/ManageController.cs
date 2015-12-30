@@ -319,6 +319,80 @@ namespace Geeky.Master.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
 
+
+        //GET: /Manage/UserRoles
+        [HttpGet]
+        [Route("manage/userroles")]
+        public async Task<IActionResult> ManageUserRoles(ManageMessageId? message = null)
+        {
+            ViewData["StatusMessage"] =
+                message == ManageMessageId.RemoveLoginSuccess ? "The external role was removed."
+                : message == ManageMessageId.AddLoginSuccess ? "The external role was added."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : "";
+
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            var roleStrings = _userManager.GetRolesAsync(user).Result.ToList();
+            var userRoles = new List<GeekyRole>();
+            if (roleStrings.Count > 0)
+            {
+                userRoles.AddRange(roleStrings.Select(userRole => _roleManager.Roles.Single(r => r.Name == userRole)).Where(role => role != null));
+            }
+
+            var availableRoles = _roleManager.Roles.Where(r => userRoles.All(ur => ur.Id != r.Id)).ToList();
+
+            if (_userManager.IsInRoleAsync(user, "RoleAdmin").Result || _userManager.IsInRoleAsync(user, "Admin").Result)
+            {
+                ViewData["CanEditRoles"] = true;
+            }
+            else
+            {
+                ViewData["CanEditRoles"] = false;
+            }
+
+            return View(new ManageUserRolesViewModel()
+            {
+                CurrentRoles = userRoles,
+                AvailableRoles = availableRoles
+            });
+        }
+
+
+
+
+        //
+        // POST: /Manage/AddUserRole
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddUserRole(string role)
+        {
+            var user = GetCurrentUserAsync().Result;
+            
+            var res = _userManager.AddToRoleAsync(user, role).Result;
+
+            return RedirectToAction("ManageUserRoles");
+        }
+
+        //
+        // POST: /Manage/RemoveUserRole
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveUserRole(string role)
+        {
+            var user = GetCurrentUserAsync().Result;
+
+            var res = _userManager.RemoveFromRoleAsync(user, role).Result;
+
+            return RedirectToAction("ManageUserRoles");
+        }
+
+
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
