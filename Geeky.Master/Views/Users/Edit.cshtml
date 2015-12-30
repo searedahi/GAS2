@@ -1,7 +1,7 @@
-@model Geeky.Master.Models.GeekyRole
+@model Geeky.Master.Models.GeekyUser
 
 @{
-    ViewData["Title"] = Model.Name;
+    ViewData["Title"] = Model.Email;
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -14,10 +14,10 @@
         <input type="hidden" asp-for="ConcurrencyStamp" />
 
         <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <label asp-for="Email" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger" />
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger" />
             </div>
         </div>
 

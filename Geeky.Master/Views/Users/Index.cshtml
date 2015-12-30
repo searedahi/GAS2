@@ -1,0 +1,27 @@
+@model IEnumerable<GeekyUser>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2>
+    @ViewData["Title"]
+</h2>
+<p class="text-success">@ViewData["StatusMessage"]</p>
+<div>
+    <span class="btn btn-success inner-addon left-addon">
+        <i class="glyphicon glyphicon-ok"></i>
+        <a asp-action="Create" style="background-color: transparent; border: none"> Create</a>
+    </span>
+
+    <span>
+        <em>
+            or pick a user.
+        </em>
+    </span>
+</div>
+<br />
+@foreach (var role in Model)
+{
+    <a asp-action="Details" asp-route-id="@role.Id" class="btn btn-info" title="Manage the @role.Email role?"> @role.Email</a>
+}

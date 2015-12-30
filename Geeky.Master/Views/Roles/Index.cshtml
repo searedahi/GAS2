@@ -1,36 +1,27 @@
 @model IEnumerable<Geeky.Master.Models.GeekyRole>
 
 @{
-    ViewData["Title"] = "Role Management";
+    ViewData["Title"] = "Roles";
 }
 
-<h2>@ViewData["Title"].</h2>
+<h2>
+    @ViewData["Title"]
+</h2>
 <p class="text-success">@ViewData["StatusMessage"]</p>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-
-        <th></th>
-    </tr>
+<div>
+    <span class="btn btn-success inner-addon left-addon">
+        <i class="glyphicon glyphicon-ok"></i>
+        <a asp-action="Create" style="background-color: transparent; border: none" > Create</a>
+    </span>
     
-@foreach (var item in Model) {
-    <tr>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-    </tr>
+    <span>
+        <em>
+            or pick a role.
+        </em>
+    </span>
+</div>
+<br />
+@foreach (var role in Model)
+{
+    <a asp-action="Details" asp-route-id="@role.Id" class="btn btn-info roleButton" title="Manage the @role.Name role?"> @role.Name</a>
 }
-</table>
