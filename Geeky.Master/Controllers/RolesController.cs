@@ -116,10 +116,15 @@ namespace Geeky.Master.Controllers
             if (ModelState.IsValid)
             {
                 geekyRole.ConcurrencyStamp = Guid.NewGuid().ToString();
-                _roleManager.UpdateAsync(geekyRole);
-                return RedirectToAction("Index");
+               var res = _roleManager.UpdateAsync(geekyRole).Result;
+                if (res.Succeeded)
+                {
+                    return RedirectToAction("Index");
+
+                }
+                return View();
             }
-            return View(geekyRole);
+            return View();
         }
 
         // GET: GeekyRoles/Delete/5
