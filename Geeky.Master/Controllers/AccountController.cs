@@ -435,6 +435,32 @@ namespace Geeky.Master.Controllers
             }
         }
 
+        //
+        // GET: /Account/UserNameAvailable
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<bool> UserNameAvailable(string userName)
+        {
+            // Require that the user name is available.
+            var existingUser = _userManager.Users.FirstOrDefault(u => u.UserName == userName);
+
+            return existingUser == null;
+        }
+
+        //
+        // GET: /Account/EmailAvailable
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<bool> EmailAvailable(string email)
+        {
+            // Require that the wmail is available.
+            var existingUser = _userManager.Users.FirstOrDefault(u => u.Email == email);
+
+            return existingUser == null;
+        }
+
+
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
