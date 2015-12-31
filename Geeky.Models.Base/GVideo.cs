@@ -4,7 +4,7 @@ using Geeky.Models.Base.Interfaces;
 
 namespace Geeky.Models.Base
 {
-    public class RImage : IRImage
+    public class GVideo : IGVideo
     {
         public Guid? Id { get; set; }
         public string Name { get; set; }
@@ -15,12 +15,10 @@ namespace Geeky.Models.Base
         public DateTime? Disabled { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public bool IsBadge { get; set; }
-
-        //Navigation Properties
         public virtual ICollection<Product> Products { get; set; }
+        //public virtual ICollection<Flower> Flowers { get; set; }
+        //public virtual ICollection<Extract> Extracts { get; set; }
+        //public virtual ICollection<Edible> Edibles { get; set; }
         //public virtual ICollection<Subscription> Subscriptions { get; set; }
-        //public virtual ICollection<ROrder> ROrders{ get; set; }
-        //public virtual ICollection<RBox> RBoxes { get; set; }
     }
 }

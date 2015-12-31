@@ -4,7 +4,7 @@ using Geeky.Models.Base.Enums;
 
 namespace Geeky.Models.Base.Interfaces
 {
-    public interface IRiseUser
+    public interface IGeekyUser
     {
         PrefixEnumType? Prefix { get; set; }
         string FirstName { get; set; }

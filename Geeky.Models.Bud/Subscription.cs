@@ -49,8 +49,8 @@ namespace Geeky.Models.Bud
         //public virtual ICollection<SubscriptionPlan> SubscriptionPlans { get; set; }
         //Navigation Properties
         //public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<RImage> Images { get; set; }
-        public virtual ICollection<RVideo> Videos { get; set; }
+        public virtual ICollection<GImage> Images { get; set; }
+        public virtual ICollection<GVideo> Videos { get; set; }
         //public Guid? PatientId { get; set; }
         //public Guid? RBoxId { get; set; }
         //public Guid? ROrderId { get; set; }

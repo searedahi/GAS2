@@ -4,7 +4,7 @@ using Geeky.Models.Bud.Enums;
 
 namespace Geeky.Models.Bud.Interfaces
 {
-    public interface IStrain : IRiseBaseObject
+    public interface IStrain : IGeekyBaseObject
     {
         ICollection<Strain> Strains { get; set; }
         string TypeName { get; set; } // Sativa / indica

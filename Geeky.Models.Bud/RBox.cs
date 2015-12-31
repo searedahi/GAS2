@@ -34,8 +34,8 @@ namespace Geeky.Models.Bud
 
         public string ColorCode { get; set; }
         public string ImageUrl { get; set; }
-        public virtual ICollection<RImage> Images { get; set; }
-        public virtual ICollection<RVideo> Videos { get; set; }
+        public virtual ICollection<GImage> Images { get; set; }
+        public virtual ICollection<GVideo> Videos { get; set; }
         //[ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }
         //[ForeignKey("SubscriptionId")]

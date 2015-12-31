@@ -2,7 +2,7 @@
 
 namespace Geeky.Models.Bud.Interfaces
 {
-    public interface INutritionFacts : IRiseBaseObject
+    public interface INutritionFacts : IGeekyBaseObject
     {
         double Calories { get; set; }
         double ServingSize { get; set; }

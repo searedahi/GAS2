@@ -9,7 +9,7 @@ namespace Geeky.Models.Bud
         public virtual Subscription Subscription { get; set; }
         public virtual MedicalRecommendation ActiveRecommendation { get; set; }
         public virtual RBox ActiveBox { get; set; }
-        public virtual ICollection<ROrder> Orders { get; set; }
+        public virtual ICollection<GOrder> Orders { get; set; }
         public virtual ICollection<Physician> Physicians { get; set; }
         //public virtual ICollection<Caregiver> Caregivers { get; set; }
         public virtual ICollection<MedicalCondition> MedicalConditions { get; set; }

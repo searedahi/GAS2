@@ -20,7 +20,7 @@ namespace Geeky.Models.Bud
         public string ColorCode { get; set; }
         //[ForeignKey("Badge")]
         public Guid? BadgeId { get; set; }
-        public virtual RImage Badge { get; set; }
+        public virtual GImage Badge { get; set; }
         //[ForeignKey("MainImage")]
         //public Guid? MainImageId { get; set; }
         //public virtual RImage MainImage { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Geeky.Models.Base.Interfaces
 {
-    public interface IRImage : IMedia
+    public interface IGImage : IMedia
     {
     }
 }

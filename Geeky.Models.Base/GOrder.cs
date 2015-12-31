@@ -5,7 +5,7 @@ using Geeky.Models.Base.Enums;
 
 namespace Geeky.Models.Base
 {
-    public class ROrder
+    public class GOrder
     {
         public Guid? Id { get; set; }
         //public virtual Patient Patient { get; set; }
@@ -44,9 +44,9 @@ namespace Geeky.Models.Base
 
         public string ColorCode { get; set; }
         public string ImageUrl { get; set; }
-        public virtual ICollection<ROrderItem> OrderItems { get; set; }
-        public virtual ICollection<RImage> Images { get; set; }
-        public virtual ICollection<RVideo> Videos { get; set; }
+        public virtual ICollection<GOrderItem> OrderItems { get; set; }
+        public virtual ICollection<GImage> Images { get; set; }
+        public virtual ICollection<GVideo> Videos { get; set; }
         //public Guid? PatientId { get; set; }
         //public Guid? RiseBoxId { get; set; }
         //public Guid? SubscriptionId { get; set; }

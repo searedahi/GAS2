@@ -16,7 +16,7 @@ namespace Geeky.Models.Bud
         [Display(Name = "Expires")]
         public DateTime? ExpirationDate { get; set; }
         public string ImageUrl { get; set; }
-        public virtual ICollection<RImage> Images { get; set; }
+        public virtual ICollection<GImage> Images { get; set; }
         public string PatientIdRaw { get; set; }
         public string PhysicianNameRaw { get; set; }
         [Display(Name="Verification Url")]
@@ -26,7 +26,7 @@ namespace Geeky.Models.Bud
         public bool IsVerified { get; set; }
         public bool IsActivePatientRecommendation { get; set; }
 
-        public virtual RImage RecommendationImage { get; set; }
+        public virtual GImage RecommendationImage { get; set; }
         public Guid? RecommendationImageId { get; set; }
 
         //Navigation Properties

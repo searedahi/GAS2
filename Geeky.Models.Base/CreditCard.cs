@@ -6,7 +6,7 @@ using Geeky.Models.Base.Interfaces;
 
 namespace Geeky.Models.Base
 {
-    public class CreditCard : IRiseBaseObject
+    public class CreditCard : IGeekyBaseObject
     {
         public Guid? Id { get; set; }
         [Display(Name = "Name On Card")]

@@ -2,7 +2,7 @@
 
 namespace Geeky.Models.Base.Interfaces
 {
-    public interface IProduct : IRiseBaseObject
+    public interface IProduct : IGeekyBaseObject
     {
         decimal Price { get; set; }
         string PriceFormatted { get; }
@@ -12,8 +12,8 @@ namespace Geeky.Models.Base.Interfaces
         string ColorCode { get; set; }
         string ImageUrl { get; set; }
 
-        ICollection<RImage> Images { get; set; }
-        ICollection<RVideo> Videos { get; set; }
+        ICollection<GImage> Images { get; set; }
+        ICollection<GVideo> Videos { get; set; }
         //ICollection<RBoxItem> RBoxeItems { get; set; }
 
     }

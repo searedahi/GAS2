@@ -33,8 +33,8 @@ namespace Geeky.Models.Base
         public bool IsSeniorCitizen { get; set; }
         [Display(Name = "Drivers License")]
         public string DriversLicense { get; set; }
-        public virtual RImage DriversLicenseImage { get; set; }
-        public virtual RImage ProfileImage { get; set; }
+        public virtual GImage DriversLicenseImage { get; set; }
+        public virtual GImage ProfileImage { get; set; }
         public bool IsValid
         {
             get

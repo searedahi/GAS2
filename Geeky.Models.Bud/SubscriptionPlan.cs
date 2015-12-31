@@ -24,9 +24,9 @@ namespace Geeky.Models.Bud
         public string ColorCode { get; set; }
         public string ImageUrl { get; set; }
         public double? Dosage { get; set; }
-        public virtual ICollection<RImage> Images { get; set; }
-        public virtual ICollection<RVideo> Videos { get; set; }
-        public virtual ICollection<RTag> BulletPoints { get; set; }
+        public virtual ICollection<GImage> Images { get; set; }
+        public virtual ICollection<GVideo> Videos { get; set; }
+        public virtual ICollection<GTag> BulletPoints { get; set; }
         public virtual ICollection<Subscription> Subscriptions { get; set; }
         public virtual ICollection<RBoxItem> RBoxeItems { get; set; }
 
@@ -34,9 +34,9 @@ namespace Geeky.Models.Bud
         {
             Id = Guid.NewGuid();
 
-            Images = new Collection<RImage>();
-            Videos = new Collection<RVideo>();
-            BulletPoints = new List<RTag>();
+            Images = new Collection<GImage>();
+            Videos = new Collection<GVideo>();
+            BulletPoints = new List<GTag>();
         }
         public SubscriptionPlan(string guid)
         {

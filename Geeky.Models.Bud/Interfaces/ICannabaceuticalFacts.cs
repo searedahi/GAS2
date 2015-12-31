@@ -2,7 +2,7 @@
 
 namespace Geeky.Models.Bud.Interfaces
 {
-    public interface ICannabaceuticalFacts : IRiseBaseObject
+    public interface ICannabaceuticalFacts : IGeekyBaseObject
     {
         // Tetrahydrocannabinol
         double ThcPercentage { get; set; }

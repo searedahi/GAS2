@@ -21,8 +21,8 @@ namespace Geeky.Models.Base
         public string DosageUnit { get; set; }
         public string ColorCode { get; set; }
         public string ImageUrl { get; set; }
-        public virtual ICollection<RImage> Images { get; set; }
-        public virtual ICollection<RVideo> Videos { get; set; }
+        public virtual ICollection<GImage> Images { get; set; }
+        public virtual ICollection<GVideo> Videos { get; set; }
         //public virtual ICollection<RBoxItem> RBoxeItems { get; set; }
     }
 }

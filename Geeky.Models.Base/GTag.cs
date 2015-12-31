@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Geeky.Models.Base
 {
-    public class RTag
+    public class GTag
     {
         [Key]
         public Guid? Id { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Geeky.Models.Base.Interfaces
 {
-    public interface IRiseBaseObject
+    public interface IGeekyBaseObject
     {
         Guid? Id { get; set; }
         string Name { get; set; }
