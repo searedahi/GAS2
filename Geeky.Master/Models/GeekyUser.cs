@@ -10,6 +10,9 @@ namespace Geeky.Master.Models
     // Add profile data for application users by adding properties to the GeekyUser class
     public class GeekyUser : IdentityUser
     {
+
+        public virtual ICollection<UserProfile> Profiles { get; set; }
+
         public PrefixEnumType? Prefix { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -27,13 +30,13 @@ namespace Geeky.Master.Models
         public bool IsSeniorCitizen { get; set; }
         [Display(Name = "Drivers License")]
         public string DriversLicense { get; set; }
-        [Display(Name = "Patient Id")]
-        public string PatientId { get; set; }
+        //[Display(Name = "Patient Id")]
+        //public string PatientId { get; set; }
         public bool HasCaregiver { get; set; }
         public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
         public virtual ICollection<PhysicalAddress> Addresses { get; set; }
-        public GeekyUser Caregiver { get; set; }
-        public ICollection<GeekyUser> Physicians { get; set; }
+        //public GeekyUser Caregiver { get; set; }
+        //public ICollection<GeekyUser> Physicians { get; set; }
 
         public GeekyUser()
         {
