@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{853148B1-5A50-42F2-8363-33D148245CB2}</ProjectGuid>
+    <ProjectGuid>{14DD1134-6567-4A6B-ADA7-F11220D3E351}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Geeky.Models.Base</RootNamespace>
-    <AssemblyName>Geeky.Models.Base</AssemblyName>
+    <RootNamespace>Geeky.Models.Bud</RootNamespace>
+    <AssemblyName>Geeky.Models.Bud</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,38 +35,42 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Geeky.Models.Base\Geeky.Models.Base.csproj">
+      <Project>{853148b1-5a50-42f2-8363-33d148245cb2}</Project>
+      <Name>Geeky.Models.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgeVerification.cs" />
-    <Compile Include="AuthorizationSignature.cs" />
-    <Compile Include="CreditCard.cs" />
-    <Compile Include="Enums\MonthTypeEnum.cs" />
-    <Compile Include="Enums\PhoneNumberTypeEnum.cs" />
-    <Compile Include="Enums\PhysicalAddressTypeEnum.cs" />
-    <Compile Include="Enums\PhysicalState.cs" />
-    <Compile Include="Enums\PrefixEnumType.cs" />
-    <Compile Include="Enums\RiseStatusEnumType.cs" />
-    <Compile Include="GeekyUser.cs" />
-    <Compile Include="Geometry.cs" />
-    <Compile Include="Glossary.cs" />
-    <Compile Include="Interfaces\IMedia.cs" />
-    <Compile Include="Interfaces\IPhysicalState.cs" />
-    <Compile Include="Interfaces\IProduct.cs" />
-    <Compile Include="Interfaces\IRImage.cs" />
-    <Compile Include="Interfaces\IRiseBaseObject.cs" />
-    <Compile Include="Interfaces\IRiseUser.cs" />
-    <Compile Include="Interfaces\IRVideo.cs" />
-    <Compile Include="PhoneNumber.cs" />
-    <Compile Include="PhysicalAddress.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="CannabaceuticalFacts.cs" />
+    <Compile Include="Caregiver.cs" />
+    <Compile Include="Edible.cs" />
+    <Compile Include="Enums\EdibleTypeEnum.cs" />
+    <Compile Include="Enums\FrequencyTypeEnum.cs" />
+    <Compile Include="Enums\GrowTypeEnum.cs" />
+    <Compile Include="Enums\StrainTypeEnum.cs" />
+    <Compile Include="Extract.cs" />
+    <Compile Include="Flower.cs" />
+    <Compile Include="Interfaces\ICannabaceuticalFacts.cs" />
+    <Compile Include="Interfaces\IEdible.cs" />
+    <Compile Include="Interfaces\IExtract.cs" />
+    <Compile Include="Interfaces\IFlower.cs" />
+    <Compile Include="Interfaces\INutritionFacts.cs" />
+    <Compile Include="Interfaces\IStrain.cs" />
+    <Compile Include="Interfaces\ISubscription.cs" />
+    <Compile Include="MedicalConditon.cs" />
+    <Compile Include="MedicalRecommendation.cs" />
+    <Compile Include="MedicalSymptom.cs" />
+    <Compile Include="NutritionFact.cs" />
+    <Compile Include="Patient.cs" />
+    <Compile Include="PatientIdModel.cs" />
+    <Compile Include="Physician.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RImage.cs" />
-    <Compile Include="ROrder.cs" />
-    <Compile Include="ROrderItem.cs" />
-    <Compile Include="RTag.cs" />
-    <Compile Include="RVideo.cs" />
-    <Compile Include="UserProfile.cs" />
-    <Compile Include="YearType.cs" />
+    <Compile Include="RBox.cs" />
+    <Compile Include="RBoxItem.cs" />
+    <Compile Include="Strain.cs" />
+    <Compile Include="Subscription.cs" />
+    <Compile Include="SubscriptionPlan.cs" />
+    <Compile Include="Tools\RandomLetter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

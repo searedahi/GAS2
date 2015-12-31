@@ -35,10 +35,17 @@
   "frameworks": {
     "dnx451": {
       "dependencies": {
-        "EntityFramework.SqlServerCompact40": "7.0.0-rc1-final"
+        "EntityFramework.SqlServerCompact40": "7.0.0-rc1-final",
+        "Geeky.Models.Base": "1.0.0-*",
+        "Geeky.Models.Bud": "1.0.0-*"
       }
     },
-    "dnxcore50": { }
+    "dnxcore50": {
+      "dependencies": {
+        "Geeky.Models.Base": "1.0.0-*",
+        "Geeky.Models.Bud": "1.0.0-*"
+      }
+    }
   },
 
   "exclude": [

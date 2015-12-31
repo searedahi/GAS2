@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Geeky.Models.Base.Enums;
 
 namespace Geeky.Models.Base
 {
     public class GeekyUser
     {
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
+        [Key]
+        public Guid Id { get; set; }
+        public Guid? ApplicationUserId { get; set; }
+        public RiseStatusEnumType Status { get; set; }
 
-        public string Email { get; set; }
+        //Lazy Loading references
 
-        public string UserId { get; set; }
+        //public Guid? UserProfileId { get; set; }
+        public virtual UserProfile UserProfile { get; set; }
+
+        public virtual AuthorizationSignature AuthorizationSignature { get; set; }
+        public string GoogleLookup { get; set; }
+
+        public Guid? ActiveCreditCardId { get; set; }
+        public CreditCard ActiveCreditCard { get; set; }
+        public virtual ICollection<CreditCard> CreditCards { get; set; }
 
     }
 }

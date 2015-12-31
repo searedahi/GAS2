@@ -17,7 +17,7 @@
     </span>
 </div>
 <br />
-@foreach (var role in Model)
+@foreach (var role in Model.OrderBy(r=>r.Name))
 {
     <a asp-action="Details" asp-route-id="@role.Id" class="btn btn-info roleButton" title="Manage the @role.Name role?"> @role.Name</a>
 }
