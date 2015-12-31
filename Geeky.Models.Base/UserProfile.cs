@@ -18,10 +18,7 @@ namespace Geeky.Models.Base
 
         [Display(Name = "Full Name")]
         //[NotMapped]
-        public string FullName
-        {
-            get { return string.Format("{0} {1}", FirstName, LastName); }
-        }
+        public string FullName => $"{FirstName} {LastName}";
 
         [Display(Name = "Suffix")]
         public string Suffix { get; set; }

@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Mvc;
-using Geeky.Master.Models;
+using Geeky.Models.Base;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.Logging;
+using GeekyUser = Geeky.Master.Models.GeekyUser;
 
 namespace Geeky.Master.Controllers
 {
@@ -30,12 +31,42 @@ namespace Geeky.Master.Controllers
                 message == UsersMessageId.ConcurrecyError ? "That User has has been changed already."
                 : "";
 
-            var Users = _userManager.Users;
+            var users = _userManager.Users;
             var listr = new List<GeekyUser>();
 
-            if (Users != null)
+            foreach (var user in users)
             {
-                listr = Users.ToList();
+                var profilePicUrl = "";
+
+                if (user.Profiles == null || !user.Profiles.Any())
+                {
+                    user.Profiles = new List<UserProfile>();
+                    user.Profiles.Add(new UserProfile
+                    {
+                        ProfileImage =
+                            new GImage { DataUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png", ThumbnailUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png" }
+                    });
+                }
+                else
+                {
+                    if (user.Profiles.FirstOrDefault().ProfileImage == null)
+                    {
+                        user.Profiles.FirstOrDefault().ProfileImage = new GImage();
+                        user.Profiles.FirstOrDefault().ProfileImage.DataUrl =
+                            "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg";
+                        user.Profiles.FirstOrDefault().ProfileImage.ThumbnailUrl =
+                            "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg";
+                    }
+                }
+            }
+
+            if (users != null)
+            {
+                listr = users.ToList();
+                for (int i = 0; i < 1000; i++)
+                {
+                    listr.AddRange(users.ToList());
+                }
             }
 
             return View(listr);

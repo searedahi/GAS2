@@ -36,3 +36,8 @@ textarea {
 .roleButton {
     margin-bottom: 1em;
 }
+
+.userIndexThumb {
+    max-height: 50px; 
+    max-width: 50px;
+}

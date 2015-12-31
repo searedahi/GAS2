@@ -6,8 +6,11 @@
   },
 
   "dependencies": {
+    "datatables.net": "1.10.10",
+    "datatables.net.bootstrap": "1.10.10.2",
     "EntityFramework.Commands": "7.0.0-rc1-final",
     "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+    "jQuery": "2.1.4",
     "Microsoft.AspNet.Authentication.Cookies": "1.0.0-rc1-final",
     "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-rc1-final",
     "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-rc1-final",
