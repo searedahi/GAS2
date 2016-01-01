@@ -6,6 +6,7 @@
   },
 
   "dependencies": {
+    "AutoMapper": "4.1.1",
     "datatables.net": "1.10.10",
     "datatables.net.bootstrap": "1.10.10.2",
     "EntityFramework.Commands": "7.0.0-rc1-final",

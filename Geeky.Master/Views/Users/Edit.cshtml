@@ -1,4 +1,4 @@
-@model Geeky.Master.Models.GeekyUser
+@model GeekyUserEditViewModel
 
 @{
     ViewData["Title"] = Model.Email;
@@ -14,6 +14,14 @@
         <input type="hidden" asp-for="ConcurrencyStamp" />
 
         <div class="form-group">
+            <label asp-for="UserName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UserName" class="form-control" id="UserName" />
+                <span asp-validation-for="UserName" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
             <label asp-for="Email" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Email" class="form-control" />
@@ -22,14 +30,21 @@
         </div>
 
         <div class="form-group">
-            <span class="btn btn-info inner-addon left-addon">
-                <i class="glyphicon glyphicon-chevron-left"></i>
-                <a asp-action="Index"> Back</a>
-            </span>
-            <span class="btn btn-success inner-addon left-addon">
-                <i class="glyphicon glyphicon-ok"></i>
-                <input type="submit" value="Save" style="background-color: transparent; border: none" />
-            </span>
+            <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a asp-action="Index" class="btn btn-info glyphicon glyphicon-chevron-left"> </a>
+
+                <button type="submit" value="Create" class="btn btn-success">
+                    <i class="glyphicon glyphicon-plus"></i> Save
+                </button>
+            </div>
         </div>
     </div>
 </form>
@@ -38,4 +53,16 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $("input#UserName").on({
+            keydown: function (e) {
+                if (e.which === 32)
+                    return false;
+            },
+            change: function () {
+                this.value = this.value.replace(/\s/g, "");
+            }
+        });
+    </script>
 }

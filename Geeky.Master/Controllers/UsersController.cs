@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
+using Geeky.Master.ViewModels.Account;
 using Microsoft.AspNet.Mvc;
 using Geeky.Models.Base;
 using Microsoft.AspNet.Authorization;
@@ -44,18 +46,22 @@ namespace Geeky.Master.Controllers
                     user.Profiles.Add(new UserProfile
                     {
                         ProfileImage =
-                            new GImage { DataUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png", ThumbnailUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png" }
+                            new GImage
+                            {
+                                DataUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png",
+                                ThumbnailUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png"
+                            }
                     });
                 }
                 else
                 {
                     if (user.Profiles.FirstOrDefault().ProfileImage == null)
                     {
-                        user.Profiles.FirstOrDefault().ProfileImage = new GImage();
-                        user.Profiles.FirstOrDefault().ProfileImage.DataUrl =
-                            "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg";
-                        user.Profiles.FirstOrDefault().ProfileImage.ThumbnailUrl =
-                            "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg";
+                        user.Profiles.FirstOrDefault().ProfileImage = new GImage
+                        {
+                            DataUrl = "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg",
+                            ThumbnailUrl = "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg"
+                        };
                     }
                 }
             }
@@ -63,10 +69,10 @@ namespace Geeky.Master.Controllers
             if (users != null)
             {
                 listr = users.ToList();
-                for (int i = 0; i < 1000; i++)
-                {
-                    listr.AddRange(users.ToList());
-                }
+                //for (int i = 0; i < 1000; i++)
+                //{
+                //    listr.AddRange(users.ToList());
+                //}
             }
 
             return View(listr);
@@ -98,12 +104,20 @@ namespace Geeky.Master.Controllers
         // POST: Users/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(GeekyUser geekyUser)
+        public IActionResult Create(GeekyUserCreateViewModel geekyCreateModel)
         {
             if (ModelState.IsValid)
             {
-                geekyUser.Id = Guid.NewGuid().ToString();
-                geekyUser.ConcurrencyStamp = Guid.NewGuid().ToString();
+                var geekyUser = new GeekyUser
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    ConcurrencyStamp = Guid.NewGuid().ToString(),
+                    UserName = geekyCreateModel.UserName,
+                    Email = geekyCreateModel.Email,
+                    PhoneNumber = geekyCreateModel.PhoneNumber
+                };
+
+
                 var res = _userManager.CreateAsync(geekyUser);
 
                 if (res.Result.Succeeded)
@@ -113,7 +127,7 @@ namespace Geeky.Master.Controllers
                 }
                 return View();
             }
-            return View(geekyUser);
+            return View(geekyCreateModel);
         }
 
         // GET: Users/Edit/5
@@ -129,16 +143,43 @@ namespace Geeky.Master.Controllers
             {
                 return HttpNotFound();
             }
-            return View(geekyUser);
+
+            //Mapper.CreateMap<GeekyUserViewModel, GeekyUser>();
+            //Mapper.Map(geekyUser, geekyView);
+
+
+            var geekyView = new GeekyUserEditViewModel
+            {
+                Id = geekyUser.Id,
+                ConcurrencyStamp = geekyUser.ConcurrencyStamp,
+                UserName = geekyUser.UserName,
+                Email = geekyUser.Email,
+                PhoneNumber = geekyUser.PhoneNumber
+            };
+
+            return View(geekyView);
         }
 
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(GeekyUser geekyUser)
+        public IActionResult Edit(GeekyUserEditViewModel geekyUserModel)
         {
             if (ModelState.IsValid)
             {
+                var geekyUser = new GeekyUser
+                {
+                    Id = geekyUserModel.Id,
+                    ConcurrencyStamp = geekyUserModel.ConcurrencyStamp,
+                    UserName = geekyUserModel.UserName,
+                    Email = geekyUserModel.Email,
+                    PhoneNumber = geekyUserModel.PhoneNumber
+                };
+
+                //Mapper.CreateMap<GeekyUser, GeekyUserViewModel>();
+                //Mapper.Map(geekyUserModel, geekyUser);
+
+
                 var res = _userManager.UpdateAsync(geekyUser).Result;
                 if (res.Succeeded)
                 {

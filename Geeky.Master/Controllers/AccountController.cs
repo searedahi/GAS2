@@ -442,7 +442,7 @@ namespace Geeky.Master.Controllers
         public async Task<bool> UserNameAvailable(string userName)
         {
             // Require that the user name is available.
-            var existingUser = _userManager.Users.FirstOrDefault(u => u.UserName == userName);
+            var existingUser = _userManager.Users.FirstOrDefault(u => u.UserName.ToLower() == userName.ToLower());
 
             return existingUser == null;
         }
@@ -454,11 +454,52 @@ namespace Geeky.Master.Controllers
         public async Task<bool> EmailAvailable(string email)
         {
             // Require that the wmail is available.
-            var existingUser = _userManager.Users.FirstOrDefault(u => u.Email == email);
+            var existingUser = _userManager.Users.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
 
             return existingUser == null;
         }
 
+        //
+        // GET: /Account/UserNameAvailable
+        [HttpGet]
+        public async Task<bool> UserNameEditAvailable(GeekyUserEditViewModel userModel)
+        {
+            // Require that the user name is available.
+            var user = _userManager.Users.Single(u => u.Id == userModel.Id);
+
+            var existingUser = _userManager.Users.FirstOrDefault(u => String.Equals(u.UserName, user.UserName, StringComparison.CurrentCultureIgnoreCase));
+
+            if (existingUser != null)
+            {
+                if (existingUser.Id != user.Id)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        //
+        // GET: /Account/EmailAvailable
+        [HttpGet]
+        public async Task<bool> EmailEditAvailable(GeekyUserEditViewModel userModel)
+        {
+            // Require that the wmail is available.
+            var user = _userManager.Users.Single(u => u.Id == userModel.Id);
+
+            var existingUser = _userManager.Users.FirstOrDefault(u => String.Equals(u.Email, userModel.Email, StringComparison.CurrentCultureIgnoreCase));
+
+            if (existingUser != null)
+            {
+                if (existingUser.Id != user.Id)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
 
         #region Helpers
