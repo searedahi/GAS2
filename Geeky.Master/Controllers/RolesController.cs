@@ -145,6 +145,15 @@ namespace Geeky.Master.Controllers
             _roleManager.DeleteAsync(geekyRole);
             return RedirectToAction("Index");
         }
+
+
+
+        public IActionResult Get()
+        {
+            return new JsonResult(_roleManager.Roles.ToList());
+        }
+
+
     }
 
     public enum RolesMessageId
