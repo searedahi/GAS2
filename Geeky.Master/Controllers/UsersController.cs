@@ -30,7 +30,7 @@ namespace Geeky.Master.Controllers
         public IActionResult Index(UsersMessageId? message = null)
         {
             ViewData["StatusMessage"] =
-                message == UsersMessageId.ConcurrecyError ? "That User has has been changed already."
+                message == UsersMessageId.ConcurrecyError ? "That User has already changed somehow..."
                 : "";
 
             var users = _userManager.Users;
