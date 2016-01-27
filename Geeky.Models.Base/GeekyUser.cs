@@ -5,7 +5,7 @@ using Geeky.Models.Base.Enums;
 
 namespace Geeky.Models.Base
 {
-    public class GeekyUser
+    public partial class GeekyUser
     {
         [Key]
         public Guid Id { get; set; }

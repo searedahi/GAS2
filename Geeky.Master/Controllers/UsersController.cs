@@ -30,7 +30,7 @@ namespace Geeky.Master.Controllers
         public IActionResult Index(UsersMessageId? message = null)
         {
             ViewData["StatusMessage"] =
-                message == UsersMessageId.ConcurrecyError ? "That User has has been changed already."
+                message == UsersMessageId.ConcurrecyError ? "That User has already changed somehow..."
                 : "";
 
             var users = _userManager.Users;
@@ -167,14 +167,11 @@ namespace Geeky.Master.Controllers
         {
             if (ModelState.IsValid)
             {
-                var geekyUser = new GeekyUser
-                {
-                    Id = geekyUserModel.Id,
-                    ConcurrencyStamp = geekyUserModel.ConcurrencyStamp,
-                    UserName = geekyUserModel.UserName,
-                    Email = geekyUserModel.Email,
-                    PhoneNumber = geekyUserModel.PhoneNumber
-                };
+                var geekyUser = _userManager.Users.Single(u => u.Id == geekyUserModel.Id);
+                geekyUser.ConcurrencyStamp = geekyUserModel.ConcurrencyStamp;
+                geekyUser.UserName = geekyUserModel.UserName;
+                geekyUser.Email = geekyUserModel.Email;
+                geekyUser.PhoneNumber = geekyUserModel.PhoneNumber;
 
                 //Mapper.CreateMap<GeekyUser, GeekyUserViewModel>();
                 //Mapper.Map(geekyUserModel, geekyUser);
@@ -214,7 +211,7 @@ namespace Geeky.Master.Controllers
         public IActionResult DeleteConfirmed(string id)
         {
             var geekyUser = _userManager.Users.Single(m => m.Id == id);
-            _userManager.DeleteAsync(geekyUser);
+            var res = _userManager.DeleteAsync(geekyUser).Result;
             return RedirectToAction("Index");
         }
     }

@@ -44,8 +44,8 @@ namespace Geeky.Models.Base
             }
         }
 
-        public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
-        public virtual ICollection<PhysicalAddress> Addresses { get; set; }
+        //public virtual ICollection<PhoneNumber> PhoneNumbers { get; set; }
+        //public virtual ICollection<PhysicalAddress> Addresses { get; set; }
         //public virtual ICollection<PatientIdModel> PatientIds { get; set; }
         //public PatientIdModel PatientIdModel { get; set; }
         public virtual GeekyUser BaseUser { get; set; }

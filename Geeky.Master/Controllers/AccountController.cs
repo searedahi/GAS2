@@ -105,6 +105,11 @@ namespace Geeky.Master.Controllers
             if (ModelState.IsValid)
             {
                 var user = new GeekyUser { UserName = model.UserName, Email = model.Email };
+
+                if (!string.IsNullOrEmpty(model.PhoneNumber))
+                {
+                    user.PhoneNumbers.Add(new Geeky.Models.Base.PhoneNumber { Value = model.PhoneNumber });
+                }
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
