@@ -1,17 +1,14 @@
 {
-  "userSecretsId": "aspnet5-Geeky.Master-d6dc15b9-0078-4011-af4d-28caa977a938",
+  "userSecretsId": "aspnet5-Geeky.Swimteam-b0d0fd97-7ac6-46cd-aae7-fb0d2133cd89",
   "version": "1.0.0-*",
   "compilationOptions": {
     "emitEntryPoint": true
   },
 
   "dependencies": {
-    "AutoMapper": "4.1.1",
-    "datatables.net": "1.10.10",
-    "datatables.net.bootstrap": "1.10.10.2",
     "EntityFramework.Commands": "7.0.0-rc1-final",
     "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
-    "jQuery": "2.1.4",
+    "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1",
     "Microsoft.AspNet.Authentication.Cookies": "1.0.0-rc1-final",
     "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-rc1-final",
     "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-rc1-final",
@@ -22,7 +19,7 @@
     "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
     "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
     "Microsoft.Extensions.CodeGenerators.Mvc": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Configuration.FileProviderExtensions" : "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
@@ -39,18 +36,11 @@
   "frameworks": {
     "dnx451": {
       "dependencies": {
-        "EntityFramework.SqlServerCompact40": "7.0.0-rc1-final",
-        "Geeky.Models.Base": "1.0.0-*",
-        "Geeky.Models.Boating": "1.0.0-*",
-        "Geeky.Models.Bud": "1.0.0-*",
         "Geeky.Models.Swim": "1.0.0-*"
       }
     },
     "dnxcore50": {
       "dependencies": {
-        "Geeky.Models.Base": "1.0.0-*",
-        "Geeky.Models.Boating": "1.0.0-*",
-        "Geeky.Models.Bud": "1.0.0-*",
         "Geeky.Models.Swim": "1.0.0-*"
       }
     }
