@@ -13,7 +13,7 @@ namespace Geeky.Master.Testing
         [TestMethod]
         public void Register_PositivePath()
         {
-            var targetUrl = "http://localhost:51138/register";
+            var targetUrl = "http://localhost:51138/account/register";
 
             var regModel = new RegisterViewModel
             {
