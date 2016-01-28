@@ -14,5 +14,7 @@ namespace Geeky.Models.Base.ViewModels.Account
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        public string __RequestVerificationToken { get; set; }
     }
 }
