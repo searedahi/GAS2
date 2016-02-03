@@ -47,11 +47,11 @@ namespace Geeky.Swimteam
 
             services.AddEntityFramework()
                 .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>(options =>
+                .AddDbContext<SwimteamDbContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<SwimteamUser, IdentityRole>()
+                .AddEntityFrameworkStores<SwimteamDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
@@ -85,7 +85,7 @@ namespace Geeky.Swimteam
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
                         .CreateScope())
                     {
-                        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
+                        serviceScope.ServiceProvider.GetService<SwimteamDbContext>()
                              .Database.Migrate();
                     }
                 }

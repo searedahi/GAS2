@@ -6,6 +6,7 @@
   },
 
   "dependencies": {
+    "AspNet.Security.OpenIdConnect.Server": "1.0.0-beta4",
     "AutoMapper": "4.1.1",
     "datatables.net": "1.10.10",
     "datatables.net.bootstrap": "1.10.10.2",
@@ -40,17 +41,13 @@
     "dnx451": {
       "dependencies": {
         "EntityFramework.SqlServerCompact40": "7.0.0-rc1-final",
-        "Geeky.Models.Base": "1.0.0-*",
         "Geeky.Models.Boating": "1.0.0-*",
-        "Geeky.Models.Bud": "1.0.0-*",
         "Geeky.Models.Swim": "1.0.0-*"
       }
     },
     "dnxcore50": {
       "dependencies": {
-        "Geeky.Models.Base": "1.0.0-*",
         "Geeky.Models.Boating": "1.0.0-*",
-        "Geeky.Models.Bud": "1.0.0-*",
         "Geeky.Models.Swim": "1.0.0-*"
       }
     }

@@ -10,7 +10,7 @@ using Geeky.Swimteam.Models;
 
 namespace Geeky.Swimteam.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(SwimteamDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {

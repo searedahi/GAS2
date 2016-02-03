@@ -10,7 +10,7 @@ using Geeky.Swimteam.Models;
 
 namespace Geeky.Swimteam.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(SwimteamDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
