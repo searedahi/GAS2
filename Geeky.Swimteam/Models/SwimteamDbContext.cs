@@ -8,7 +8,7 @@ using Geeky.Swimteam.Models;
 
 namespace Geeky.Swimteam.Models
 {
-    public class SwimteamDbContext : IdentityDbContext<SwimteamUser>
+    public class SwimteamDbContext : IdentityDbContext<SwimteamUser, SwimteamRole, string>
     {
         protected override void OnModelCreating(ModelBuilder builder)
         {

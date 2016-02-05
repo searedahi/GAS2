@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
 using Geeky.Swimteam.Models;
 using Geeky.Swimteam.Services;
 using Geeky.Swimteam.ViewModels.Account;
+
 
 namespace Geeky.Swimteam.Controllers
 {
@@ -20,6 +18,7 @@ namespace Geeky.Swimteam.Controllers
     {
         private readonly UserManager<SwimteamUser> _userManager;
         private readonly SignInManager<SwimteamUser> _signInManager;
+        private readonly RoleManager<SwimteamRole> _roleManager;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
@@ -27,12 +26,14 @@ namespace Geeky.Swimteam.Controllers
         public AccountController(
             UserManager<SwimteamUser> userManager,
             SignInManager<SwimteamUser> signInManager,
+            RoleManager<SwimteamRole> roleManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
@@ -60,7 +61,7 @@ namespace Geeky.Swimteam.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
@@ -104,7 +105,7 @@ namespace Geeky.Swimteam.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new SwimteamUser { UserName = model.Email, Email = model.Email };
+                var user = new SwimteamUser { UserName = model.UserName, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

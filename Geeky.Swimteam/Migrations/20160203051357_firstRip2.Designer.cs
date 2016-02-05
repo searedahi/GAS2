@@ -8,9 +8,10 @@ using Geeky.Swimteam.Models;
 namespace Geeky.Swimteam.Migrations
 {
     [DbContext(typeof(SwimteamDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160203051357_firstRip2")]
+    partial class firstRip2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")

@@ -50,7 +50,7 @@ namespace Geeky.Swimteam
                 .AddDbContext<SwimteamDbContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddIdentity<SwimteamUser, IdentityRole>()
+            services.AddIdentity<SwimteamUser, SwimteamRole>()
                 .AddEntityFrameworkStores<SwimteamDbContext>()
                 .AddDefaultTokenProviders();
 

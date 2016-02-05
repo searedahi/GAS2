@@ -1,44 +1,23 @@
 @model IEnumerable<Geeky.Swimteam.Models.SwimteamRole>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Roles";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ConcurrencyStamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NormalizedName)
-        </th>
-        <th></th>
-    </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NormalizedName)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-    </tr>
+<h2>
+    @ViewData["Title"]
+</h2>
+<p class="text-success">@ViewData["StatusMessage"]</p>
+<div>
+    <a asp-action="Create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Create</a>
+    <span>
+        <em>
+            or pick a role.
+        </em>
+    </span>
+</div>
+<br />
+@foreach (var role in Model.OrderBy(r=>r.Name))
+{
+    <a asp-action="Details" asp-route-id="@role.Id" class="btn btn-info roleButton" title="Manage the @role.Name role?"> @role.Name</a>
 }
-</table>

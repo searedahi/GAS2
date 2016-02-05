@@ -12,6 +12,13 @@ using Microsoft.Extensions.Logging;
 using Geeky.Master.Models;
 using Geeky.Master.Services;
 using Geeky.Master.ViewModels.Account;
+using Geeky.Models.Base.ViewModels.Account;
+using ExternalLoginConfirmationViewModel = Geeky.Master.ViewModels.Account.ExternalLoginConfirmationViewModel;
+using ForgotPasswordViewModel = Geeky.Master.ViewModels.Account.ForgotPasswordViewModel;
+using GeekyUserEditViewModel = Geeky.Master.ViewModels.Account.GeekyUserEditViewModel;
+using RegisterViewModel = Geeky.Master.ViewModels.Account.RegisterViewModel;
+using ResetPasswordViewModel = Geeky.Master.ViewModels.Account.ResetPasswordViewModel;
+using VerifyCodeViewModel = Geeky.Master.ViewModels.Account.VerifyCodeViewModel;
 
 namespace Geeky.Master.Controllers
 {

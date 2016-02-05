@@ -8,6 +8,7 @@ using Geeky.Swimteam.Models;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.Logging;
+using UserProfile = Geeky.Swimteam.Models.UserProfile;
 
 namespace Geeky.Swimteam.Controllers
 {

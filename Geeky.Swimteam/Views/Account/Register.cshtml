@@ -12,8 +12,22 @@
     <div class="form-group">
         <label asp-for="Email" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
+            <input asp-for="Email" class="form-control" title="Email is used to send updates and verify your identity only. Seriously. :)"/>
             <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="UserName" class="form-control" title="An email IS your identity. We  wanna use a username for login instead. yeah?" />
+            <span asp-validation-for="UserName" class="text-danger" ></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="PhoneNumber" class="form-control" title="We use this to send you security codes.  It's good for you... now eat your veggies!" />
+            <span asp-validation-for="PhoneNumber" class="text-danger" ></span>
         </div>
     </div>
     <div class="form-group">
@@ -39,4 +53,17 @@
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+
+<script>
+            $("input#UserName").on({
+                keydown: function (e) {
+                    if (e.which === 32)
+                        return false;
+                },
+                change: function () {
+                    this.value = this.value.replace(/\s/g, "");
+                }
+            });
+</script>
 }
