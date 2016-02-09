@@ -10,19 +10,20 @@ namespace Geeky.Swimteam.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "WaterFit";
             return View();
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Water fit aquatics information page.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Contact Us.";
 
             return View();
         }
