@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45+win": {
+      "wrappedProject": "../../Geeky.Models.Bud/Geeky.Models.Bud.csproj",
+      "bin": {
+        "assembly": "../../Geeky.Models.Bud/obj/{configuration}/Geeky.Models.Bud.dll",
+        "pdb": "../../Geeky.Models.Bud/obj/{configuration}/Geeky.Models.Bud.pdb"
+      },
+      "dependencies": {
+        "Geeky.Models.Base": "1.0.0-*"
+      }
+    },
+    "net45+win+MonoAndroid10+Xamarin.iOS10+MonoTouch10": {
+      "wrappedProject": "../../Geeky.Models.Bud/Geeky.Models.Bud.csproj",
+      "bin": {
+        "assembly": "../../Geeky.Models.Bud/obj/{configuration}/Geeky.Models.Bud.dll",
+        "pdb": "../../Geeky.Models.Bud/obj/{configuration}/Geeky.Models.Bud.pdb"
+      },
+      "dependencies": {
+        "Geeky.Models.Base": "1.0.0-*"
+      }
+    }
+  }
+}
