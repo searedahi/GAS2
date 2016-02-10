@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/parallax.css" />
+
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body>
+
+    <div class="navbar navbar-parallax" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">WaterFit</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="divider"></li>
+                    <li><a asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div id="startchange"></div>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/images/parallax/1200x650/butterfly.jpg" alt="..." title="Are you ready to swim like this guy?  So are we!" class="caroselImg" width="100%">
+                <div class="carousel-caption">
+
+                    <h4>Class Schedule</h4>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/images/parallax/1200x650/laneline.jpg" alt="..." title="We're safe here at waterfit.'" class="caroselImg" width="100%">
+                <div class="carousel-caption">
+                    <h4>Safety third... NOT!</h4>
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/images/parallax/1200x650/kickboards1.jpg" alt="..." title="Swim boards art very artistic arn't they" class="caroselImg" width="100%">
+                <div class="carousel-caption">
+                    <h4>We're about water, and fitness.</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <div class="content-block-one">
+        <h1>Check out our class schedule here</h1>
+        <p>PTA meetings, little person 'X' is sick, El Nino decided to show up... No problem. Let's check the schdule.</p>
+    </div>
+    <div class="content-space-one">
+        <div class="text-center">
+            <h1>Safety involves more than a whistle!</h1>
+            <div class="page-break"></div>
+            <p>we're doing alot more than splashing around. Water is slippery when wet, SAFETY FIRST! Now let's jump in and swim!</p>
+        </div>
+    </div>
+    <div class="content-block-one">
+        <h1></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="content-space-two">
+        <div class="text-center">
+            <h1>There's an app for that.</h1>
+            <div class="page-break"></div>
+            <p>WaterFit has the app thing going. We can manage payaments, check ins and check outs all from your phone. (Soon)</p>
+        </div>
+    </div>
+    <div class="content-block-one">
+        <h1>Why did Vegetarians stop swimming?</h1>
+        <p>Because they don’t like meats! But we like meets and vegetarians! No seriously, checkout our meets.</p>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2016 - Geeky.Swimteam</p>
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+
+
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+
+
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/parallax.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
