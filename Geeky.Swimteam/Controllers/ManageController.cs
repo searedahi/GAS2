@@ -9,6 +9,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using Geeky.Swimteam.Models;
 using Geeky.Swimteam.Services;
+using Geeky.Swimteam.ViewModels.Account;
 using Geeky.Swimteam.ViewModels.Manage;
 
 namespace Geeky.Swimteam.Controllers
@@ -16,21 +17,25 @@ namespace Geeky.Swimteam.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<SwimteamUser> _userManager;
+        private readonly SignInManager<SwimteamUser> _signInManager;
+        private readonly RoleManager<SwimteamRole> _roleManager;
+
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
         public ManageController(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
+        UserManager<SwimteamUser> userManager,
+        SignInManager<SwimteamUser> signInManager,
+        RoleManager<SwimteamRole> roleManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
         ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
@@ -315,6 +320,80 @@ namespace Geeky.Swimteam.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
 
+
+        //GET: /Manage/UserRoles
+        [HttpGet]
+        [Route("manage/userroles")]
+        public async Task<IActionResult> ManageUserRoles(ManageMessageId? message = null)
+        {
+            ViewData["StatusMessage"] =
+                message == ManageMessageId.RemoveLoginSuccess ? "The external role was removed."
+                : message == ManageMessageId.AddLoginSuccess ? "The external role was added."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : "";
+
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+
+            var roleStrings = _userManager.GetRolesAsync(user).Result.ToList();
+            var userRoles = new List<SwimteamRole>();
+            if (roleStrings.Count > 0)
+            {
+                userRoles.AddRange(roleStrings.Select(userRole => _roleManager.Roles.Single(r => r.Name == userRole)).Where(role => role != null));
+            }
+
+            var availableRoles = _roleManager.Roles.Where(r => userRoles.All(ur => ur.Id != r.Id)).ToList();
+
+            if (_userManager.IsInRoleAsync(user, "RoleAdmin").Result || _userManager.IsInRoleAsync(user, "Admin").Result)
+            {
+                ViewData["CanEditRoles"] = true;
+            }
+            else
+            {
+                ViewData["CanEditRoles"] = false;
+            }
+
+            return View(new ManageUserRolesViewModel()
+            {
+                CurrentRoles = userRoles,
+                AvailableRoles = availableRoles
+            });
+        }
+
+
+
+
+        //
+        // POST: /Manage/AddUserRole
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddUserRole(string role)
+        {
+            var user = GetCurrentUserAsync().Result;
+
+            var res = _userManager.AddToRoleAsync(user, role).Result;
+
+            return RedirectToAction("ManageUserRoles");
+        }
+
+        //
+        // POST: /Manage/RemoveUserRole
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveUserRole(string role)
+        {
+            var user = GetCurrentUserAsync().Result;
+
+            var res = _userManager.RemoveFromRoleAsync(user, role).Result;
+
+            return RedirectToAction("ManageUserRoles");
+        }
+
+
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
@@ -337,7 +416,7 @@ namespace Geeky.Swimteam.Controllers
             Error
         }
 
-        private async Task<ApplicationUser> GetCurrentUserAsync()
+        private async Task<SwimteamUser> GetCurrentUserAsync()
         {
             return await _userManager.FindByIdAsync(HttpContext.User.GetUserId());
         }

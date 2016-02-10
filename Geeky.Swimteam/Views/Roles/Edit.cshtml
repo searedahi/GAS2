@@ -1,0 +1,41 @@
+@model Geeky.Swimteam.Models.SwimteamRole
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ConcurrencyStamp" />
+
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="btn btn-info inner-addon left-addon">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                <a asp-action="Index"> Back</a>
+            </span>
+            <span class="btn btn-success inner-addon left-addon">
+                <i class="glyphicon glyphicon-ok"></i>
+                <input type="submit" value="Save" style="background-color: transparent; border: none" />
+            </span>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

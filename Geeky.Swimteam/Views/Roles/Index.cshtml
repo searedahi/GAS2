@@ -1,0 +1,23 @@
+@model IEnumerable<Geeky.Swimteam.Models.SwimteamRole>
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h2>
+    @ViewData["Title"]
+</h2>
+<p class="text-success">@ViewData["StatusMessage"]</p>
+<div>
+    <a asp-action="Create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Create</a>
+    <span>
+        <em>
+            or pick a role.
+        </em>
+    </span>
+</div>
+<br />
+@foreach (var role in Model.OrderBy(r=>r.Name))
+{
+    <a asp-action="Details" asp-route-id="@role.Id" class="btn btn-info roleButton" title="Manage the @role.Name role?"> @role.Name</a>
+}

@@ -1,0 +1,13 @@
+@model Geeky.Swimteam.Models.SwimteamRole
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<p>
+    <a asp-action="Index" class="btn btn-info glyphicon glyphicon-chevron-left"> </a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning glyphicon glyphicon-pencil"> </a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger glyphicon glyphicon-trash"> </a>
+</p>

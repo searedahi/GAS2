@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
+using Geeky.Swimteam.Models;
 
 namespace Geeky.Swimteam.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class SwimteamDbContext : IdentityDbContext<SwimteamUser, SwimteamRole, string>
     {
         protected override void OnModelCreating(ModelBuilder builder)
         {
