@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Coach.cs" />
     <Compile Include="EnrollmentDisclosure.cs" />
+    <Compile Include="ICoach.cs" />
+    <Compile Include="IPractice.cs" />
+    <Compile Include="ISwimmer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Swimmer.cs" />
     <Compile Include="Practice.cs" />
