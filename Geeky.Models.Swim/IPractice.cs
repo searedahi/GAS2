@@ -2,7 +2,7 @@
 
 namespace Geeky.Models.Swim
 {
-    public interface IPractice
+    public interface IPractice : IGeekyObj
     {
         string Description { get; set; }
         string Begins { get; set; }
