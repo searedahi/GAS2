@@ -36,12 +36,10 @@
   "frameworks": {
     "dnx451": {
       "dependencies": {
-        "Geeky.Models.Swim": "1.0.0-*"
       }
     },
     "dnxcore50": {
       "dependencies": {
-        "Geeky.Models.Swim": "1.0.0-*"
       }
     }
   },

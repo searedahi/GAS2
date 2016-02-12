@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Geeky.Models.Swim;
+using Geeky.Swimteam.Contexts;
 using Geeky.Swimteam.Models;
+using ICoach = Geeky.Swimteam.Models.ICoach;
+using IGeekyObj = Geeky.Swimteam.Models.IGeekyObj;
+using IPractice = Geeky.Swimteam.Models.IPractice;
+using Practice = Geeky.Swimteam.Models.Practice;
 
 namespace Geeky.Swimteam.Services
 {

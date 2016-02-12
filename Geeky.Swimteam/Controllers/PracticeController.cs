@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Geeky.Models.Swim;
-using Microsoft.AspNet.Mvc;
 using Geeky.Swimteam.Models;
+using Microsoft.AspNet.Mvc;
 using Geeky.Swimteam.Services;
-using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.Logging;
+
 
 namespace Geeky.Swimteam.Controllers
 {
@@ -20,7 +19,7 @@ namespace Geeky.Swimteam.Controllers
         ILoggerFactory loggerFactory)
         {
             _practiceService = practiceService;
-            _logger = loggerFactory.CreateLogger<RolesController>();
+            _logger = loggerFactory.CreateLogger<PracticeController>();
         }
 
         // GET: Practice
@@ -127,13 +126,13 @@ namespace Geeky.Swimteam.Controllers
                 return HttpNotFound();
             }
 
-            var SwimteamRole = _practiceService.Practices.Single(m => m.Id.ToString().Equals(id));
-            if (SwimteamRole == null)
+            var practice = _practiceService.Practices.Single(m => m.Id.ToString().Equals(id));
+            if (practice == null)
             {
                 return HttpNotFound();
             }
 
-            return View(SwimteamRole);
+            return View(practice);
         }
 
         // POST: Practice/Delete/5

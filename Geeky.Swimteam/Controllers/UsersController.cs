@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Geeky.Models.Base;
-using Geeky.Models.Base.ViewModels.Account;
 using Microsoft.AspNet.Mvc;
 using Geeky.Swimteam.Models;
+using Geeky.Swimteam.Models.ViewModels.Account;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.Logging;
-using UserProfile = Geeky.Swimteam.Models.UserProfile;
+
 
 namespace Geeky.Swimteam.Controllers
 {

@@ -3,7 +3,7 @@ using Geeky.Models.Base.Enums;
 
 namespace Geeky.Models.Base
 {
-    public class PhoneNumber
+    public partial class PhoneNumber
     {
 
         public Guid Id { get; set; }

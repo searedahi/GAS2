@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using Geeky.Models.Base;
-using Geeky.Models.Swim;
+using Geeky.Swimteam.Models;
 
 namespace Geeky.Swimteam.ViewModels.Dashboard
 {
     public class DashboardViewModel
     {
-        public GeekyUser GeekyUser { get; set; }
+        public SwimteamUser SwimteamUser { get; set; }
 
         public List<Swimmer> Swimmers { get; set; }
 

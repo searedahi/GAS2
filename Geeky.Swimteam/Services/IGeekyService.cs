@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Geeky.Models.Swim;
+﻿using Geeky.Swimteam.Models;
 
 namespace Geeky.Swimteam.Services
 {

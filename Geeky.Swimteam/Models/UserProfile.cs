@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Geeky.Models.Base;
-using Geeky.Models.Base.Enums;
+using Geeky.Swimteam.Models.Enums;
 
 namespace Geeky.Swimteam.Models
 {
@@ -9,10 +8,13 @@ namespace Geeky.Swimteam.Models
     {
         public Guid? Id { get; set; }
         public PrefixEnumType? Prefix { get; set; }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
+
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
@@ -22,24 +24,42 @@ namespace Geeky.Swimteam.Models
 
         [Display(Name = "Suffix")]
         public string Suffix { get; set; }
+
         [Display(Name = "Birthday")]
         public DateTime? DOB { get; set; }
+
         [Display(Name = "Veteran")]
         public bool IsVeteran { get; set; }
+
         [Display(Name = "Senior")]
         public bool IsSeniorCitizen { get; set; }
+
         [Display(Name = "Drivers License")]
         public string DriversLicense { get; set; }
+
         public virtual GImage DriversLicenseImage { get; set; }
         public virtual GImage ProfileImage { get; set; }
+
         public bool IsValid
         {
             get
             {
-                if (string.IsNullOrEmpty(FirstName)) { return false; }
-                if (string.IsNullOrEmpty(LastName)) { return false; }
-                if (DOB == null || DOB.Value.Year < 1900) { return false; }
-                if (string.IsNullOrEmpty(DriversLicense)) { return false; }
+                if (string.IsNullOrEmpty(FirstName))
+                {
+                    return false;
+                }
+                if (string.IsNullOrEmpty(LastName))
+                {
+                    return false;
+                }
+                if (DOB == null || DOB.Value.Year < 1900)
+                {
+                    return false;
+                }
+                if (string.IsNullOrEmpty(DriversLicense))
+                {
+                    return false;
+                }
                 return true;
             }
         }
@@ -52,11 +72,5 @@ namespace Geeky.Swimteam.Models
         public Guid? ProfileImageId { get; set; }
         public Guid? DriversLicenseImageId { get; set; }
 
-        //public UserProfile()
-        //{
-        //    //Id = Guid.NewGuid();
-        //    Addresses = new List<PhysicalAddress>();
-        //    PhoneNumbers = new List<PhoneNumber>();
-        //}
     }
 }
