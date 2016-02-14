@@ -5,7 +5,7 @@ using Microsoft.Data.Entity.Metadata;
 
 namespace Geeky.Swimteam.Migrations
 {
-    public partial class redoTry1 : Migration
+    public partial class initFromHome : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

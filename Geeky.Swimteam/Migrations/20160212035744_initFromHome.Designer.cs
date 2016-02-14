@@ -8,8 +8,8 @@ using Geeky.Swimteam.Contexts;
 namespace Geeky.Swimteam.Migrations
 {
     [DbContext(typeof(SwimteamDbContext))]
-    [Migration("20160211234755_redoTryNumber2")]
-    partial class redoTryNumber2
+    [Migration("20160212035744_initFromHome")]
+    partial class initFromHome
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
