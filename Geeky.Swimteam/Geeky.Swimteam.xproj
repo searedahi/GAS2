@@ -19,9 +19,5 @@
     <DnxInvisibleContent Include=".bowerrc" />
     <DnxInvisibleContent Include="package.json" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Geeky.Models.Base\Geeky.Models.Base.csproj" />
-    <ProjectReference Include="..\Geeky.Models.Swim\Geeky.Models.Swim.csproj" />
-  </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

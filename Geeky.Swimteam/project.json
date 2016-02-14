@@ -37,6 +37,9 @@
   "frameworks": {
     "dnx451": {
       "dependencies": {
+        "ImageResizer": "4.0.5"
+      },
+      "frameworkAssemblies": {
       }
     },
     "dnxcore50": {

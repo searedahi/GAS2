@@ -1,4 +1,6 @@
-@model IEnumerable<Geeky.Swimteam.Models.IPractice>
+@using System.Collections.Generic
+@using System.Threading.Tasks
+@model System.Collections.Generic.IEnumerable<Geeky.Swimteam.Models.Practice>
 
 @{
     ViewData["Title"] = "Index";
@@ -23,9 +25,6 @@
             @Html.DisplayNameFor(model => model.Begins)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ConcurrencyStamp)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
@@ -41,9 +40,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Begins)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
