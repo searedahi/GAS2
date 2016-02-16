@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -12,11 +13,10 @@ using System.Windows.Forms;
 
 namespace ImageMaker
 {
-    class Program
+    class BasicImageMaker
     {
         static void Main(string[] args)
         {
-
             Console.Write("Raw Images:\t");
             SendKeys.SendWait(@"C:\GAS2\Geeky.Swimteam\wwwroot\images\LegoPeeps\Raw");
             var source = Console.ReadLine();
@@ -39,15 +39,18 @@ namespace ImageMaker
             SendKeys.SendWait("White");
             var color = Console.ReadLine();
 
+
             var files = GetFiles(source);
             var targetDir = !Directory.Exists(target)
                 ? Directory.CreateDirectory(target)
                 : new DirectoryInfo(target);
 
             var recordCount = 0;
-
+            var conList = new ConcurrentBag<string>();
             var timer = new Stopwatch();
+
             timer.Start();
+
             Parallel.ForEach(files, file =>
             {
                 var loopSb = new StringBuilder(sb.ToString());
@@ -59,15 +62,22 @@ namespace ImageMaker
                 var newImage = FixedSize(i, height, width, color);
                 newImage.Save(newFile);
 
-                //Console.WriteLine(loopSb.ToString());
+                // Debug stuff...
                 recordCount++;
+                conList.Add(nameOnly);
             });
 
             timer.Stop();
-            Console.WriteLine();
-            Console.WriteLine("{0} milliseconds.",timer.Elapsed.Milliseconds);
-            Console.WriteLine("{0} Files Created.", recordCount);
+
+            Console.WriteLine("\r\n{0} files created in {1} milliseconds.", recordCount, timer.Elapsed.Milliseconds);
+            Console.WriteLine("\r\nFile names: \r\n");
+
+            foreach (string str in conList.OrderBy(s=>s.ToString()))
+            {
+                Console.WriteLine(str);
+            }
             Console.ReadLine();
+
         }
 
         static List<string> GetFiles(string directory)
@@ -75,9 +85,7 @@ namespace ImageMaker
             var files = Directory.GetFiles(directory).ToList();
             return files;
         }
-
-
-
+        
         static Image FixedSize(Image imgPhoto, int Width, int Height, string backgroundColor)
         {
             int sourceWidth = imgPhoto.Width;
