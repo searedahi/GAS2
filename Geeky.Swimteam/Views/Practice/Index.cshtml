@@ -1,23 +1,19 @@
 @using System.Collections.Generic
 @using System.Threading.Tasks
-@model System.Collections.Generic.IEnumerable<Geeky.Swimteam.Models.Practice>
+@model System.Collections.Generic.IEnumerable<Geeky.Swimteam.Models.IPractice>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Practices";
 }
 
 
 
-<h2>Index</h2>
+<h2>Practice Schedule</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+
+    <a asp-action="Create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Create</a>
 </p>
-
-<div class="responsive-iframe-container big-container">
-    <iframe id="apiproxyd0a7331171c9f89b620b1c0cf2e3aa5af243c1a10.8841831772588193" name="apiproxyd0a7331171c9f89b620b1c0cf2e3aa5af243c1a10.8841831772588193" src="https://clients6.google.com/static/proxy.html?jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.w3Tx2eMVQ98.O%2Fm%3D__features__%2Fam%3DEQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAGLTcCNeuA6fh3UuNhp2xEvsnGEgIx5hkg#parent=https%3A%2F%2Fcalendar.google.com&amp;rpctoken=869122863" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe>
-</div>
-
 
 <table class="table">
     <tr>
@@ -35,26 +31,45 @@
         </th>
         <th></th>
     </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Begins)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ends)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxParticipants)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Begins)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ends)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxParticipants)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
 </table>
+
+
+@*<div id="calendar"></div>
+
+
+@section Scripts {
+    <link rel="stylesheet" href="~/lib/bootstrap-calendar/css/calendar.css">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="~/lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap-calendar/js/calendar.js"></script>
+    <script type="text/javascript">
+        var calendar = $("#calendar").calendar(
+            {
+                tmpl_path: "/tmpls/",
+                events_source: function () { return []; }
+            });
+    </script>
+}*@

@@ -4,6 +4,7 @@ using System.Linq;
 using Geeky.Swimteam.Models;
 using Microsoft.AspNet.Mvc;
 using Geeky.Swimteam.Services;
+using Geeky.Swimteam.ViewModels.Practice;
 using Microsoft.Extensions.Logging;
 
 
@@ -66,7 +67,7 @@ namespace Geeky.Swimteam.Controllers
         // POST: Practice/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Practice practice)
+        public IActionResult Create(PracticeViewModel practice)
         {
             if (ModelState.IsValid)
             {

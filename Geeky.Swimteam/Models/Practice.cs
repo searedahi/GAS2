@@ -8,8 +8,8 @@ namespace Geeky.Swimteam.Models
     {
         public Guid Id { get; set; }
         public string Description { get; set; }
-        public string Begins { get; set; }
-        public string Ends { get; set; }
+        public DateTime Begins { get; set; }
+        public DateTime Ends { get; set; }
         public ICollection<CoachesPractices> Coaches { get; set; }
         public ICollection<SwimmersPractices> Swimmers { get; set; }
         public int MaxParticipants { get; set; }

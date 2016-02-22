@@ -120,18 +120,72 @@ namespace Geeky.Swimteam.Migrations
                     b.HasKey("Id");
                 });
 
+            modelBuilder.Entity("Geeky.Swimteam.Models.PhoneNumber", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("NumberType");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("Geeky.Swimteam.Models.PhysicalAddress", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("County");
+
+                    b.Property<string>("RawStreetAddress");
+
+                    b.Property<string>("RawStreetAddress2");
+
+                    b.Property<string>("State");
+
+                    b.Property<string>("Street2");
+
+                    b.Property<string>("StreetDirection");
+
+                    b.Property<string>("StreetName");
+
+                    b.Property<string>("StreetNumber");
+
+                    b.Property<string>("StreetType");
+
+                    b.Property<Guid>("SwimteamUserGuid");
+
+                    b.Property<string>("SwimteamUserId");
+
+                    b.Property<int>("Type");
+
+                    b.Property<string>("Unit");
+
+                    b.Property<string>("UnparsedAddress");
+
+                    b.Property<string>("ZipCode");
+
+                    b.HasKey("Id");
+                });
+
             modelBuilder.Entity("Geeky.Swimteam.Models.Practice", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Begins");
+                    b.Property<DateTime>("Begins");
 
                     b.Property<string>("ConcurrencyStamp");
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Ends");
+                    b.Property<DateTime>("Ends");
 
                     b.Property<int>("MaxParticipants");
 
@@ -391,6 +445,13 @@ namespace Geeky.Swimteam.Migrations
                     b.HasOne("Geeky.Swimteam.Models.Swimteam")
                         .WithMany()
                         .HasForeignKey("SwimteamId");
+                });
+
+            modelBuilder.Entity("Geeky.Swimteam.Models.PhysicalAddress", b =>
+                {
+                    b.HasOne("Geeky.Swimteam.Models.SwimteamUser")
+                        .WithMany()
+                        .HasForeignKey("SwimteamUserId");
                 });
 
             modelBuilder.Entity("Geeky.Swimteam.Models.UserProfile", b =>
