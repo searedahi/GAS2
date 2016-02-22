@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Geeky.Swimteam.Models.ViewModels.Account
+namespace Geeky.Swimteam.ViewModels.Account
 {
-    public class GeekyUserEditViewModel
+    public class SwimteamUserEditViewModel
     {
         public virtual string Id { get; set; }
         public virtual string ConcurrencyStamp { get; set; }
@@ -22,7 +22,7 @@ namespace Geeky.Swimteam.Models.ViewModels.Account
         public string PhoneNumber { get; set; }
     }
 
-    public class GeekyUserCreateViewModel
+    public class SwimteamUserCreateViewModel
     {
         public virtual string Id { get; set; }
         public virtual string ConcurrencyStamp { get; set; }

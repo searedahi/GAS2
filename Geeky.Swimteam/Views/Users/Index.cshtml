@@ -72,8 +72,8 @@
             rowBG.Append(",0.2)");
 
 
-            <tr style="background-color: @rowBG.ToString() !important; cursor: pointer" onclick="location.href = '@(Url.Action("Details", "Users", new {id = user.Id}))'">
-                <td style="background-color: @profilePicBG.ToString() !important;"><img src="@user.Profiles.FirstOrDefault().ProfileImage.ThumbnailUrl" class="userIndexThumb" /></td>
+            <tr style="background-color: @rowBG.ToString() !important; cursor: pointer;" onclick="location.href = '@(Url.Action("Details", "Users", new {id = user.Id}))'">
+                <td style="background-color: @profilePicBG.ToString() !important;" class="profileImgCell"><img src="@user.Profiles.FirstOrDefault().ProfileImage.ThumbnailUrl" class="userIndexThumb" /></td>
                 <td>@user.UserName</td>
                 <td>@user.Email</td>
                 <td>@user.Profiles.FirstOrDefault().FirstName</td>
@@ -93,14 +93,14 @@
 {
 
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css"/>
 
     <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js" asp-append-version="true"></script>
     <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js" asp-append-version="true"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#example').DataTable({
                 "aoColumnDefs": [
                     { "bSortable": false, "aTargets": [0] }

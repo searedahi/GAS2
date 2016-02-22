@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.AspNet.Mvc;
 using Geeky.Swimteam.Models;
-using Geeky.Swimteam.Models.ViewModels.Account;
+using Geeky.Swimteam.ViewModels.Account;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.Logging;
@@ -32,46 +33,55 @@ namespace Geeky.Swimteam.Controllers
                 message == UsersMessageId.ConcurrecyError ? "That User has already changed somehow..."
                 : "";
 
-            var users = _userManager.Users;
+            var users = _userManager.Users.ToList();
             var listr = new List<SwimteamUser>();
+
+            //setup some random lego pics for users without images on file.
+            var dirPath = "images/LegoPeeps/250x250/";
+
+            var usedFiles = new List<string>();
+            var picsAvail = PicsAvailable(dirPath);
+
+            //if (users != null && users.Count > 0)
+            //{
+            //   for (int i = 0; i < 10; i++)
+            //    {
+            //        users.AddRange(users.ToList());
+            //    }
+            //}
 
             foreach (var user in users)
             {
-                var profilePicUrl = "";
-
                 if (user.Profiles == null || !user.Profiles.Any())
                 {
                     user.Profiles = new List<UserProfile>();
-                    user.Profiles.Add(new UserProfile
-                    {
-                        ProfileImage =
-                            new GImage
-                            {
-                                DataUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png",
-                                ThumbnailUrl = "https://cdn3.iconfinder.com/data/icons/security-and-protection/512/detective_agent_spy_thief_flat_icon-512.png"
-                            }
-                    });
                 }
-                else
+
+                var userPro = user.Profiles.FirstOrDefault();
+
+                if (user.Profiles.FirstOrDefault() == null)
                 {
-                    if (user.Profiles.FirstOrDefault().ProfileImage == null)
-                    {
-                        user.Profiles.FirstOrDefault().ProfileImage = new GImage
-                        {
-                            DataUrl = "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg",
-                            ThumbnailUrl = "https://blog.etsy.com/en/files/2013/05/marbles-etsy.jpg"
-                        };
-                    }
+                    userPro = new UserProfile();
+                    user.Profiles.Add(userPro);
                 }
+
+                if (!string.IsNullOrEmpty(userPro.ProfileImage?.DataUrl)) continue;
+
+                // Setting up placeholder images randomly.
+                if (UsedAllPics(picsAvail, usedFiles)) { usedFiles.Clear(); }
+                var profilePicUrl = ProfilePicUrl(dirPath, usedFiles);
+
+                userPro.ProfileImage = new GImage
+                {
+                    DataUrl = profilePicUrl,
+                    ThumbnailUrl = profilePicUrl
+                };
+                usedFiles.Add(profilePicUrl);
             }
 
             if (users != null)
             {
                 listr = users.ToList();
-                //for (int i = 0; i < 1000; i++)
-                //{
-                //    listr.AddRange(users.ToList());
-                //}
             }
 
             return View(listr);
@@ -103,7 +113,7 @@ namespace Geeky.Swimteam.Controllers
         // POST: Users/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(GeekyUserCreateViewModel geekyCreateModel)
+        public IActionResult Create(SwimteamUserCreateViewModel geekyCreateModel)
         {
             if (ModelState.IsValid)
             {
@@ -147,7 +157,7 @@ namespace Geeky.Swimteam.Controllers
             //Mapper.Map(geekyUser, geekyView);
 
 
-            var geekyView = new GeekyUserEditViewModel
+            var geekyView = new SwimteamUserEditViewModel
             {
                 Id = geekyUser.Id,
                 ConcurrencyStamp = geekyUser.ConcurrencyStamp,
@@ -162,7 +172,7 @@ namespace Geeky.Swimteam.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(GeekyUserEditViewModel geekyUserModel)
+        public IActionResult Edit(SwimteamUserEditViewModel geekyUserModel)
         {
             if (ModelState.IsValid)
             {
@@ -213,6 +223,40 @@ namespace Geeky.Swimteam.Controllers
             var res = _userManager.DeleteAsync(geekyUser).Result;
             return RedirectToAction("Index");
         }
+
+
+        private string ProfilePicUrl(string dirPath, ICollection<string> usedFiles)
+        {
+            var rnd = new Random();
+            var dir = new DirectoryInfo(dirPath);
+            var files = dir.GetFiles();
+
+            var picIndex = rnd.Next(files.Length);
+            var file = files[picIndex];
+            var profilePicUrl = $"{dirPath}{file.Name}";
+
+            // dont repeat used images
+            while (usedFiles.Contains(profilePicUrl))
+            {
+                picIndex = rnd.Next(files.Length);
+                file = files[picIndex];
+                profilePicUrl = $"{dirPath}{file.Name}";
+            }
+
+            return profilePicUrl;
+        }
+        private int PicsAvailable(string dirPath)
+        {
+            var dir = new DirectoryInfo(dirPath);
+            var files = dir.GetFiles();
+            return files.Length;
+        }
+        private bool UsedAllPics(int picsInDir, ICollection<string> usedFiles)
+        {
+            return usedFiles.Count() >= picsInDir;
+        }
+
+
     }
 
     public enum UsersMessageId
