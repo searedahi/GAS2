@@ -1,4 +1,4 @@
-@model Geeky.Swimteam.Models.Practice
+@model Geeky.Swimteam.ViewModels.Practice.PracticeViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -8,22 +8,44 @@
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Practice</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Id" />
+
         <div class="form-group">
-            <label asp-for="Begins" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Begins" class="form-control" />
-                <span asp-validation-for="Begins" class="text-danger" />
+            <label asp-for="PracticeDate" class="col-md-2 control-label"></label>
+            <div class="col-md-3">
+                <div class="input-group date" id="practiceDate">
+                    <input asp-for="PracticeDate" class="form-control" type="text">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    <span asp-validation-for="PracticeDate" class="text-danger" />
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ConcurrencyStamp" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ConcurrencyStamp" class="form-control" />
-                <span asp-validation-for="ConcurrencyStamp" class="text-danger" />
+            <label asp-for="Begins" class="col-md-2 control-label"></label>
+            <div class="col-md-3">
+                <div class="input-group date" id="beginTime">
+                    <input asp-for="Begins" class="form-control" type="text">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    <span asp-validation-for="Begins" class="text-danger" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Ends" class="col-md-2 control-label"></label>
+            <div class="col-md-3">
+                <div class="input-group date" id="endTime">
+                    <input asp-for="Ends" class="form-control" type="text">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    <span asp-validation-for="Ends" class="text-danger" />
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -33,13 +55,7 @@
                 <span asp-validation-for="Description" class="text-danger" />
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Ends" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Ends" class="form-control" />
-                <span asp-validation-for="Ends" class="text-danger" />
-            </div>
-        </div>
+
         <div class="form-group">
             <label asp-for="MaxParticipants" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -47,20 +63,52 @@
                 <span asp-validation-for="MaxParticipants" class="text-danger" />
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success" />
+        <div class="form-group ">
+            <div class="col-md-offset-2" style="padding-left: 1em;">
+                <a asp-action="Index" class="btn btn-info glyphicon glyphicon-chevron-left"> </a>
+
+                <button type="submit" value="Save" class="btn btn-success">
+                    <i class="glyphicon glyphicon-save"></i> Save
+                </button>
             </div>
         </div>
     </div>
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/js/Moment.js"></script>
+    <script type="text/javascript" src="~/js/datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="~/css/DatetimePicker.css" />
+
+
+    <script>
+        $(function () {
+            $('#practiceDate').datetimepicker({
+                format: 'MM/DD/YYYY'
+            });
+            $('#beginTime').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+                , format: 'LT'
+            });
+            $('#endTime').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+                , format: 'LT'
+            });
+
+            $("#beginTime").on("dp.change", function (e) {
+                //$('#endTime').data("DateTimePicker").minDate(e.date);
+                //$('#endTime').data("DateTimePicker").maxDate(e.date);
+            });
+            $("#endTime").on("dp.change", function (e) {
+                //$('#beginTime').data("DateTimePicker").minDate(e.date);
+                //$('#beginTime').data("DateTimePicker").maxDate(e.date);
+                // $('#beginTime').data("DateTimePicker").maxTime(e.time);
+            });
+        });
+
+    </script>
 }

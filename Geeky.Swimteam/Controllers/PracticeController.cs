@@ -30,15 +30,15 @@ namespace Geeky.Swimteam.Controllers
                 message == PracticesMessageId.ConcurrecyError ? "That practice has been changed already."
                 : "";
 
-            var practices = _practiceService.Practices;
-            var listr = new List<IPractice>();
+            var domainPractices = _practiceService.Practices;
+            var viewPractices = new List<PracticeViewModel>();
 
-            if (practices != null)
+            if (domainPractices != null)
             {
-                listr = practices.ToList();
+                viewPractices = domainPractices.Select(dp => _practiceService.CastToViewModel(dp)).ToList();
             }
 
-            return View(listr);
+            return View(viewPractices.OrderBy(p => p.PracticeDate).ThenBy(p => p.Begins).ToList());
         }
 
         // GET: Practice/Details/5
@@ -93,18 +93,21 @@ namespace Geeky.Swimteam.Controllers
                 return HttpNotFound();
             }
 
-            var SwimteamRole = _practiceService.Practices.Single(m => m.Id.ToString().Equals(id));
-            if (SwimteamRole == null)
+            var practice = _practiceService.Practices.Single(m => m.Id.ToString().Equals(id));
+            if (practice == null)
             {
                 return HttpNotFound();
             }
-            return View(SwimteamRole);
+
+            var vm = _practiceService.CastToViewModel(practice);
+
+            return View(vm);
         }
 
         // POST: Practice/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Practice practice)
+        public IActionResult Edit(PracticeViewModel practice)
         {
             if (ModelState.IsValid)
             {

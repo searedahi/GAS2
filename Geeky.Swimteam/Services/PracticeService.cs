@@ -4,6 +4,7 @@ using System.Linq;
 using Geeky.Swimteam.Contexts;
 using Geeky.Swimteam.Models;
 using Geeky.Swimteam.ViewModels.Practice;
+using Microsoft.Data.Entity;
 using ICoach = Geeky.Swimteam.Models.ICoach;
 using IGeekyObj = Geeky.Swimteam.Models.IGeekyObj;
 using IPractice = Geeky.Swimteam.Models.IPractice;
@@ -27,13 +28,63 @@ namespace Geeky.Swimteam.Services
 
         public bool Create(IGeekyObj geekyObject)
         {
-            PracticeViewModel practiceVm = (PracticeViewModel)geekyObject;
+            PracticeViewModel practiceVm = geekyObject as PracticeViewModel;
             if (practiceVm == null) return false;
 
+            var practiceDb = CastToDbModel(practiceVm) as Practice;
+
+            _swimteamDb.Practices.Add(practiceDb);
+            var recordCount = _swimteamDb.SaveChanges();
+            return recordCount > 0;
+        }
+
+        public IGeekyObj Read(string geekyObjId)
+        {
+            var practice = _swimteamDb.Practices.Single(p => p.Id.ToString().Equals(geekyObjId));
+            return practice ?? new Practice();
+        }
+
+        public bool Update(IGeekyObj geekyObject)
+        {
+            PracticeViewModel practice = (PracticeViewModel)geekyObject;
+
+            if (practice == null) throw new Exception("No practice found to update???");
+
+            var castedPractice = CastToDbModel(practice) as Practice;
+            if (castedPractice == null){return false;}
+            var dbPrac = _swimteamDb.Practices.FirstOrDefault(p=>p.Id == practice.Id);
+
+            if (dbPrac == null) throw new Exception("No practice found to update???");
+
+            dbPrac.Begins = castedPractice.Begins;
+            dbPrac.Ends = castedPractice.Ends;
+            dbPrac.MaxParticipants = castedPractice.MaxParticipants;
+            dbPrac.Description = castedPractice.Description;
+
+            _swimteamDb.Practices.Update(dbPrac);
+            var recordCount = _swimteamDb.SaveChanges();
+            return recordCount > 0;
+        }
+
+        public bool Delete(IGeekyObj geekyObjId)
+        {
+            var practice = _swimteamDb.Practices.Single(p => p.Id.Equals(geekyObjId.Id));
+            if (practice == null) throw new Exception("No practice found to delete???");
+            _swimteamDb.Practices.Remove(practice);
+            var recordCount = _swimteamDb.SaveChanges();
+            return recordCount > 0;
+        }
+
+
+
+        public IPractice CastToDbModel(PracticeViewModel practiceVm)
+        {
             var practiceDb = new Practice
             {
+                Id = practiceVm.Id,
                 ConcurrencyStamp = practiceVm.ConcurrencyStamp,
-                Description = practiceVm.Description
+                Description = practiceVm.Description,
+                MaxParticipants = practiceVm.MaxParticipants
             };
 
             DateTime baseDate = new DateTime();
@@ -72,36 +123,28 @@ namespace Geeky.Swimteam.Services
                     throw new Exception($"Cannot parse end time in practice service. {ex.Message}");
                 }
             }
-
-            _swimteamDb.Practices.Add(practiceDb);
-            var recordCount = _swimteamDb.SaveChanges();
-            return recordCount > 0;
+            
+            return practiceDb;
         }
 
-        public IGeekyObj Read(string geekyObjId)
+        public PracticeViewModel CastToViewModel(IPractice practiceD)
         {
-            var practice = _swimteamDb.Practices.Single(p => p.Id.ToString().Equals(geekyObjId));
-            return practice ?? new Practice();
-        }
+            Practice domainPractice = practiceD as Practice;
+            if (domainPractice == null) return new PracticeViewModel();
 
-        public bool Update(IGeekyObj geekyObject)
-        {
-            Practice practice = (Practice)geekyObject;
+            var practiceVm = new PracticeViewModel
+            {
+                Id = domainPractice.Id,
+                ConcurrencyStamp = domainPractice.ConcurrencyStamp,
+                Description = domainPractice.Description,
+                MaxParticipants = domainPractice.MaxParticipants
+            };
 
-            if (practice == null) throw new Exception("No practice found to update???");
+            practiceVm.PracticeDate = domainPractice.Begins.ToString("d");
+            practiceVm.Begins = domainPractice.Begins.ToString("t");
+            practiceVm.Ends = domainPractice.Ends.ToString("t");
 
-            _swimteamDb.Practices.Update(practice);
-            var recordCount = _swimteamDb.SaveChanges();
-            return recordCount > 0;
-        }
-
-        public bool Delete(IGeekyObj geekyObjId)
-        {
-            var practice = _swimteamDb.Practices.Single(p => p.Id.Equals(geekyObjId.Id));
-            if (practice == null) throw new Exception("No practice found to delete???");
-            _swimteamDb.Practices.Remove(practice);
-            var recordCount = _swimteamDb.SaveChanges();
-            return recordCount > 0;
+            return practiceVm;
         }
     }
 
@@ -110,5 +153,7 @@ namespace Geeky.Swimteam.Services
     {
         IEnumerable<ICoach> Coaches { get; set; }
         IEnumerable<IPractice> Practices { get; set; }
+        IPractice CastToDbModel(PracticeViewModel practiceVm);
+        PracticeViewModel CastToViewModel(IPractice domainPractice);
     }
 }

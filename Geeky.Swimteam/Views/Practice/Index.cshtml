@@ -1,6 +1,6 @@
 @using System.Collections.Generic
 @using System.Threading.Tasks
-@model System.Collections.Generic.IEnumerable<Geeky.Swimteam.Models.IPractice>
+@model System.Collections.Generic.IEnumerable<Geeky.Swimteam.ViewModels.Practice.PracticeViewModel>
 
 @{
     ViewData["Title"] = "Practices";
@@ -18,13 +18,16 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.PracticeDate)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Begins)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Ends)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ends)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MaxParticipants)
@@ -36,13 +39,16 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.PracticeDate)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Begins)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Ends)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ends)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxParticipants)
