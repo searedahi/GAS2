@@ -1,0 +1,47 @@
+@model Geeky.Swimteam.ViewModels.Practice.PracticeViewModel
+
+@{
+    ViewData["Title"] = "Practice Details";
+}
+
+<h2>Practice Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PracticeDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PracticeDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Begins)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Begins)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ends)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ends)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxParticipants)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaxParticipants)
+        </dd>
+    </dl>
+</div>
+<div class="col-md-offset-2" style="padding-left: 1em;">
+    <a asp-action="Index" class="btn btn-info glyphicon glyphicon-chevron-left"> </a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning glyphicon glyphicon-save"> Edit</a>
+</div>

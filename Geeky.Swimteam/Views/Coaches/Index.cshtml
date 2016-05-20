@@ -1,0 +1,56 @@
+@model IEnumerable<Coach>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@section styles{
+    <style>
+        tr {
+            cursor: pointer;
+        }
+
+            tr:hover {
+                background-color: rgba(1,1,1,0.1);
+            }
+    </style>
+}
+
+<h2>Coaches</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Create</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr onclick="location.href = '@Url.Action("Details", "Coaches", new{id = item.Id})'">
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning glyphicon glyphicon-save"> Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger glyphicon glyphicon-remove"> Delete</a>
+            </td>
+        </tr>
+    }
+</table>
