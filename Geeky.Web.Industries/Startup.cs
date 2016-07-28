@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -12,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Geeky.Web.Industries.Data;
 using Geeky.Web.Industries.Models;
 using Geeky.Web.Industries.Services;
+using Autofac.Extensions.DependencyInjection;
 
 namespace Geeky.Web.Industries
 {
@@ -37,7 +36,7 @@ namespace Geeky.Web.Industries
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -52,6 +51,17 @@ namespace Geeky.Web.Industries
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            // Configute Autofac
+            var builder = new ContainerBuilder();
+
+            //builder.RegisterModule<DataModule>();
+            //builder.RegisterType<SeedDataService>().As<ISeedDataService>();
+
+            builder.Populate(services);
+
+            var container = builder.Build();
+            return container.Resolve<IServiceProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

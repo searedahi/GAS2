@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="AgeVerification.cs" />
     <Compile Include="AuthorizationSignature.cs" />
+    <Compile Include="Claim.cs" />
     <Compile Include="CreditCard.cs" />
     <Compile Include="Enums\MonthTypeEnum.cs" />
     <Compile Include="Enums\PhoneNumberTypeEnum.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="Enums\PhysicalState.cs" />
     <Compile Include="Enums\PrefixEnumType.cs" />
     <Compile Include="Enums\RiseStatusEnumType.cs" />
+    <Compile Include="ExternalLogin.cs" />
     <Compile Include="GeekyUser.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="Glossary.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Interfaces\IGeekyBaseObject.cs" />
     <Compile Include="Interfaces\IGeekyUser.cs" />
     <Compile Include="Interfaces\IGVideo.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="PhoneNumber.cs" />
     <Compile Include="PhysicalAddress.cs" />
     <Compile Include="Product.cs" />
@@ -65,6 +68,12 @@
     <Compile Include="GOrderItem.cs" />
     <Compile Include="GTag.cs" />
     <Compile Include="GVideo.cs" />
+    <Compile Include="Repositories\IExternalLoginRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="UserProfile.cs" />
     <Compile Include="ViewModels\Account\GeekyUserViewModel.cs" />
     <Compile Include="YearType.cs" />

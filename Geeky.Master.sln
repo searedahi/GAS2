@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geeky.Sea.Client", "Geeky.S
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Web.Industries", "Geeky.Web.Industries\Geeky.Web.Industries.xproj", "{E88F07C2-43C6-4B47-8233-C01D181CB7A3}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Data.Identity", "Geeky.Data.Identity\Geeky.Data.Identity.xproj", "{D1C5DA57-8DD7-4005-95D7-E47B87250313}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{E88F07C2-43C6-4B47-8233-C01D181CB7A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E88F07C2-43C6-4B47-8233-C01D181CB7A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E88F07C2-43C6-4B47-8233-C01D181CB7A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1C5DA57-8DD7-4005-95D7-E47B87250313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1C5DA57-8DD7-4005-95D7-E47B87250313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1C5DA57-8DD7-4005-95D7-E47B87250313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1C5DA57-8DD7-4005-95D7-E47B87250313}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
