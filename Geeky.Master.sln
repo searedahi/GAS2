@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Master", "Geeky.Master\Geeky.Master.xproj", "{00E07584-79B0-4C42-93A6-5C5A88746938}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageMaker", "ImageMaker\ImageMaker.csproj", "{91CDCE6C-FB28-450E-9462-85D219F7FD3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geeky.Sea.Client", "Geeky.Sea.Client\Geeky.Sea.Client.csproj", "{E7CE470E-4113-48C9-965A-259D16A022A8}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Web.Industries", "Geeky.Web.Industries\Geeky.Web.Industries.xproj", "{E88F07C2-43C6-4B47-8233-C01D181CB7A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{E7CE470E-4113-48C9-965A-259D16A022A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7CE470E-4113-48C9-965A-259D16A022A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7CE470E-4113-48C9-965A-259D16A022A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88F07C2-43C6-4B47-8233-C01D181CB7A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88F07C2-43C6-4B47-8233-C01D181CB7A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88F07C2-43C6-4B47-8233-C01D181CB7A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88F07C2-43C6-4B47-8233-C01D181CB7A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
