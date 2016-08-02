@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "exports": {
+    "Geeky.Models.Identity/1.0.0": {
+      "type": "project",
+      "framework": ".NETStandard,Version=v1.1",
+      "compile": {
+        "bin/Debug/Geeky.Models.Identity.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Geeky.Models.Identity.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Geeky.Models.Identity.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}
