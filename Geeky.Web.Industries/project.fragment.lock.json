@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "exports": {
+    "Geeky.Models.Base/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5",
+      "compile": {
+        "bin/Debug/Geeky.Models.Base.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Geeky.Models.Base.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Geeky.Models.Base.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}
