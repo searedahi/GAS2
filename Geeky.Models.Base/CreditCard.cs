@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿
 using Geeky.Models.Base.Enums;
 using Geeky.Models.Base.Interfaces;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Geeky.Models.Base
 {

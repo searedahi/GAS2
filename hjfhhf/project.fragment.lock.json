@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "exports": {
+    "Geeky.Models.Identity/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5",
+      "compile": {
+        "bin/Debug/Geeky.Models.Identity.dll": {}
+      },
+      "runtime": {
+        "../packages/Xamarin.Forms.2.0.0.6482/lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
+        "../packages/Xamarin.Forms.2.0.0.6482/lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+        "../packages/Xamarin.Forms.2.0.0.6482/lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {},
+        "bin/Debug/Geeky.Models.Identity.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Geeky.Models.Identity.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

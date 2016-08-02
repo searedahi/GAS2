@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Geeky.Models.Base;
 using Geeky.Models.Base.Enums;
-using Geeky.Models.Bud.Enums;
 using Geeky.Models.Bud.Interfaces;
 
 namespace Geeky.Models.Bud

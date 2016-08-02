@@ -1,4 +1,5 @@
 ﻿using Geeky.Data.Identity.Configuration;
+using Microsoft.Data.Entity;
 
 namespace Geeky.Data.Identity
 {

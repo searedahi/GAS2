@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{853148B1-5A50-42F2-8363-33D148245CB2}</ProjectGuid>
@@ -13,8 +13,9 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,11 +36,11 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgeVerification.cs" />
     <Compile Include="AuthorizationSignature.cs" />
-    <Compile Include="Claim.cs" />
     <Compile Include="CreditCard.cs" />
     <Compile Include="Enums\MonthTypeEnum.cs" />
     <Compile Include="Enums\PhoneNumberTypeEnum.cs" />
@@ -47,7 +48,6 @@
     <Compile Include="Enums\PhysicalState.cs" />
     <Compile Include="Enums\PrefixEnumType.cs" />
     <Compile Include="Enums\RiseStatusEnumType.cs" />
-    <Compile Include="ExternalLogin.cs" />
     <Compile Include="GeekyUser.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="Glossary.cs" />
@@ -58,7 +58,6 @@
     <Compile Include="Interfaces\IGeekyBaseObject.cs" />
     <Compile Include="Interfaces\IGeekyUser.cs" />
     <Compile Include="Interfaces\IGVideo.cs" />
-    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="PhoneNumber.cs" />
     <Compile Include="PhysicalAddress.cs" />
     <Compile Include="Product.cs" />
@@ -68,15 +67,17 @@
     <Compile Include="GOrderItem.cs" />
     <Compile Include="GTag.cs" />
     <Compile Include="GVideo.cs" />
-    <Compile Include="Repositories\IExternalLoginRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\IRoleRepository.cs" />
-    <Compile Include="Repositories\IUserRepository.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="UserProfile.cs" />
     <Compile Include="ViewModels\Account\GeekyUserViewModel.cs" />
     <Compile Include="YearType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5\Profile\Profile7\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5\Profile\Profile7\System.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

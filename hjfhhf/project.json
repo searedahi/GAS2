@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Autofac": "4.0.0-rc3-316",
+    "EntityFramework.Core": "7.0.0-rc1-final",
+    "NETStandard.Library": "1.6.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "dependencies": {
+        "Geeky.Models.Identity": {
+          "target": "project"
+        }
+      },
+      "imports": [
+        "dnxcore50",
+        "portable-net452+win81"
+      ]
+    }
+  }
+}

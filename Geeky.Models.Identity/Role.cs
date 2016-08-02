@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Geeky.Models.Base
+namespace Geeky.Models.Identity
 {
     public class Role
     {

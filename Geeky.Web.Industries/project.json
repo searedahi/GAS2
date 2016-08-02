@@ -45,8 +45,7 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Autofac": "4.0.0-rc3-316",
-    "Autofac.Extensions.DependencyInjection": "4.0.0-rc3-309",
-    "Geeky.Data.Identity": "1.0.0-*"
+    "Autofac.Extensions.DependencyInjection": "4.0.0-rc3-309"
   },
 
   "tools": {
@@ -68,6 +67,7 @@
         "Geeky.Models.Base": {
           "target": "project"
         }
+
       },
       "imports": [
         "dotnet5.6",

@@ -1,4 +1,7 @@
-﻿namespace Geeky.Data.Identity.Configuration
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Data.Entity.Metadata.Internal;
+
+namespace Geeky.Data.Identity.Configuration
 {
     internal class ClaimConfiguration : EntityTypeConfiguration<Claim>
     {

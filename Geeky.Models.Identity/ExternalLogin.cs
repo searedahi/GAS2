@@ -1,16 +1,15 @@
 ﻿using System;
 
-namespace Geeky.Models.Base
+namespace Geeky.Models.Identity
 {
-    public class Claim
+    public class ExternalLogin
     {
         private User _user;
 
         #region Scalar Properties
-        public virtual int ClaimId { get; set; }
+        public virtual string LoginProvider { get; set; }
+        public virtual string ProviderKey { get; set; }
         public virtual Guid UserId { get; set; }
-        public virtual string ClaimType { get; set; }
-        public virtual string ClaimValue { get; set; }
         #endregion
 
         #region Navigation Properties
@@ -19,8 +18,6 @@ namespace Geeky.Models.Base
             get { return _user; }
             set
             {
-                if (value == null)
-                    throw new ArgumentNullException("value");
                 _user = value;
                 UserId = value.UserId;
             }
