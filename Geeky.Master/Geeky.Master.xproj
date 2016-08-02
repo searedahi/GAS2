@@ -9,7 +9,7 @@
     <ProjectGuid>00e07584-79b0-4c42-93a6-5c5a88746938</ProjectGuid>
     <RootNamespace>Geeky.Master</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <OutputPath Condition="'$(OutputPath)'=='' ">..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
+    <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
@@ -20,9 +20,7 @@
     <DnxInvisibleContent Include="package.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Geeky.Models.Base\Geeky.Models.Base.csproj" />
     <ProjectReference Include="..\Geeky.Models.Boating\Geeky.Models.Boating.csproj" />
-    <ProjectReference Include="..\Geeky.Models.Bud\Geeky.Models.Bud.csproj" />
     <ProjectReference Include="..\Geeky.Models.Swim\Geeky.Models.Swim.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
