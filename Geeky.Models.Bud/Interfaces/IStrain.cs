@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Geeky.Models.Base.Interfaces;
 using Geeky.Models.Bud.Enums;
+using Geeky.Models.Core.Interfaces;
 
 namespace Geeky.Models.Bud.Interfaces
 {

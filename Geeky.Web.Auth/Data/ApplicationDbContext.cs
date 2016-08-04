@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Geeky.Web.Auth.Models;
 
 namespace Geeky.Web.Auth.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<GeekyUser>
+    public class ApplicationDbContext : IdentityDbContext<GeekyIdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

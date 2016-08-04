@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -15,15 +13,15 @@ namespace Geeky.Web.Auth.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private readonly UserManager<GeekyUser> _userManager;
-        private readonly SignInManager<GeekyUser> _signInManager;
+        private readonly UserManager<GeekyIdentityUser> _userManager;
+        private readonly SignInManager<GeekyIdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
         public ManageController(
-        UserManager<GeekyUser> userManager,
-        SignInManager<GeekyUser> signInManager,
+        UserManager<GeekyIdentityUser> userManager,
+        SignInManager<GeekyIdentityUser> signInManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
         ILoggerFactory loggerFactory)
@@ -350,7 +348,7 @@ namespace Geeky.Web.Auth.Controllers
             Error
         }
 
-        private Task<GeekyUser> GetCurrentUserAsync()
+        private Task<GeekyIdentityUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
         }

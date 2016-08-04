@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Geeky.Models.Base;
-using Geeky.Models.Base.Enums;
 using Geeky.Models.Bud.Interfaces;
+using Geeky.Models.Core;
+using Geeky.Models.Core.Enums;
 
 namespace Geeky.Models.Bud
 {

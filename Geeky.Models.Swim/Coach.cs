@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Geeky.Models.Base;
+﻿using System.Collections.Generic;
+using Geeky.Models.Core;
 
 namespace Geeky.Models.Swim
 {

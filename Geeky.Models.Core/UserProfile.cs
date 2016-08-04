@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Geeky.Models.Core.Enums;
+
 
 namespace Geeky.Models.Core
 {

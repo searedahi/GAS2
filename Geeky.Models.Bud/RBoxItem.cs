@@ -1,5 +1,5 @@
 ﻿using System;
-using Geeky.Models.Base;
+using Geeky.Models.Core;
 
 namespace Geeky.Models.Bud
 {

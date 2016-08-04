@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -17,15 +15,15 @@ namespace Geeky.Web.Auth.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly UserManager<GeekyUser> _userManager;
-        private readonly SignInManager<GeekyUser> _signInManager;
+        private readonly UserManager<GeekyIdentityUser> _userManager;
+        private readonly SignInManager<GeekyIdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
         public AccountController(
-            UserManager<GeekyUser> userManager,
-            SignInManager<GeekyUser> signInManager,
+            UserManager<GeekyIdentityUser> userManager,
+            SignInManager<GeekyIdentityUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
             ILoggerFactory loggerFactory)
@@ -105,7 +103,7 @@ namespace Geeky.Web.Auth.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new GeekyUser { UserName = model.Email, Email = model.Email };
+                var user = new GeekyIdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -207,7 +205,7 @@ namespace Geeky.Web.Auth.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new GeekyUser { UserName = model.Email, Email = model.Email };
+                var user = new GeekyIdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -446,7 +444,7 @@ namespace Geeky.Web.Auth.Controllers
             }
         }
 
-        private Task<GeekyUser> GetCurrentUserAsync()
+        private Task<GeekyIdentityUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
         }

@@ -1,8 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using Geeky.Web.Auth.Models
 
-@inject SignInManager<GeekyUser> SignInManager
-@inject UserManager<GeekyUser> UserManager
+@inject SignInManager<GeekyIdentityUser> SignInManager
+@inject UserManager<GeekyIdentityUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {

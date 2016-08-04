@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Geeky.Models.Core.Enums;
 using Geeky.Models.Core.Interfaces;
 

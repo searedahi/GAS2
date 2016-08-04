@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Geeky.Models.Core.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace Geeky.Models.Core
 {
