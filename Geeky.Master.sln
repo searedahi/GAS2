@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geeky.Models.Base", "Geeky.Models.Base\Geeky.Models.Base.csproj", "{853148B1-5A50-42F2-8363-33D148245CB2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geeky.Models.Bud", "Geeky.Models.Bud\Geeky.Models.Bud.csproj", "{14DD1134-6567-4A6B-ADA7-F11220D3E351}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geeky.Models.Swim", "Geeky.Models.Swim\Geeky.Models.Swim.csproj", "{52D4D572-BEF0-4F9F-B728-12D917FC6F5A}"
@@ -21,16 +19,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geeky.Models.Identity", "Ge
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Web.Auth", "Geeky.Web.Auth\Geeky.Web.Auth.xproj", "{B449C6B0-01DF-4A83-A765-1C9D7A47C342}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Models.Core", "Geeky.Models.Core\Geeky.Models.Core.xproj", "{639513E4-89C7-4694-B7F3-46A9950D9C03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{853148B1-5A50-42F2-8363-33D148245CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{853148B1-5A50-42F2-8363-33D148245CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{853148B1-5A50-42F2-8363-33D148245CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{853148B1-5A50-42F2-8363-33D148245CB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14DD1134-6567-4A6B-ADA7-F11220D3E351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14DD1134-6567-4A6B-ADA7-F11220D3E351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14DD1134-6567-4A6B-ADA7-F11220D3E351}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{B449C6B0-01DF-4A83-A765-1C9D7A47C342}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B449C6B0-01DF-4A83-A765-1C9D7A47C342}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B449C6B0-01DF-4A83-A765-1C9D7A47C342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{639513E4-89C7-4694-B7F3-46A9950D9C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{639513E4-89C7-4694-B7F3-46A9950D9C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{639513E4-89C7-4694-B7F3-46A9950D9C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{639513E4-89C7-4694-B7F3-46A9950D9C03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

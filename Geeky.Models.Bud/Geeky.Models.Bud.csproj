@@ -35,13 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Geeky.Models.Base\Geeky.Models.Base.csproj">
-      <Project>{853148b1-5a50-42f2-8363-33d148245cb2}</Project>
-      <Name>Geeky.Models.Base</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="CannabaceuticalFacts.cs" />
     <Compile Include="Caregiver.cs" />
     <Compile Include="Edible.cs" />
