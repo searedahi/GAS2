@@ -39,7 +39,7 @@ namespace Geeky.Web.Auth
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<GeekyIdentityUser, GeekyIdentityRole>()
+            services.AddIdentity<GeekyIdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -72,6 +72,8 @@ namespace Geeky.Web.Auth
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+
+
 
             app.UseMvc(routes =>
             {

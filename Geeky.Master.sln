@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageMaker", "ImageMaker\Im
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Masterv2", "Geeky.Masterv2\Geeky.Masterv2.xproj", "{2F39E271-C671-4800-A40E-BAC2C0662948}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Web.Auth", "Geeky.Web.Auth\Geeky.Web.Auth.xproj", "{B449C6B0-01DF-4A83-A765-1C9D7A47C342}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Models.Core", "Geeky.Models.Core\Geeky.Models.Core.xproj", "{639513E4-89C7-4694-B7F3-46A9950D9C03}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Models.Bud", "Geeky.Models.Bud\Geeky.Models.Bud.xproj", "{C7016850-5457-4638-BB6B-0A9A52A18AFC}"
@@ -16,6 +14,8 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Models.Boating", "Geeky.Models.Boating\Geeky.Models.Boating.xproj", "{DCA53B1B-8BD5-4BC3-B7C7-6DF937B6BAD8}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Geeky.Models.Swim", "Geeky.Models.Swim\Geeky.Models.Swim.xproj", "{14EA2645-E9CC-4C0A-9AA1-4D06EAC32FE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geeky.Test.Auth", "Geeky.Test.Auth\Geeky.Test.Auth.csproj", "{B05F8EC7-9067-496E-B77E-DD6C5916EDF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,6 @@ Global
 		{2F39E271-C671-4800-A40E-BAC2C0662948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F39E271-C671-4800-A40E-BAC2C0662948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F39E271-C671-4800-A40E-BAC2C0662948}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B449C6B0-01DF-4A83-A765-1C9D7A47C342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B449C6B0-01DF-4A83-A765-1C9D7A47C342}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B449C6B0-01DF-4A83-A765-1C9D7A47C342}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B449C6B0-01DF-4A83-A765-1C9D7A47C342}.Release|Any CPU.Build.0 = Release|Any CPU
 		{639513E4-89C7-4694-B7F3-46A9950D9C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{639513E4-89C7-4694-B7F3-46A9950D9C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639513E4-89C7-4694-B7F3-46A9950D9C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{14EA2645-E9CC-4C0A-9AA1-4D06EAC32FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14EA2645-E9CC-4C0A-9AA1-4D06EAC32FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14EA2645-E9CC-4C0A-9AA1-4D06EAC32FE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B05F8EC7-9067-496E-B77E-DD6C5916EDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B05F8EC7-9067-496E-B77E-DD6C5916EDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B05F8EC7-9067-496E-B77E-DD6C5916EDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B05F8EC7-9067-496E-B77E-DD6C5916EDF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
