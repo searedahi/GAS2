@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace Geeky.Api.Auth.Controllers
 {
-    [Route("api/Values")]
-    public class ValuesController : Controller
+    [Route("api/[controller]")]
+    public class AccountController : Controller
     {
-        // GET api/values
+        // GET: api/account
         [HttpGet]
         public IEnumerable<string> Get()
         {
