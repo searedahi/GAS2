@@ -1,5 +1,5 @@
 ﻿{
-  "userSecretsId": "aspnet-Geeky.Web.Auth-f785e923-badf-426c-9d54-e84b5f013975",
+  "userSecretsId": "aspnet-Geeky.Web.Inc-f3a23c51-82a7-45fb-9f46-27f5534d23b7",
 
   "dependencies": {
     "Microsoft.NETCore.App": {
@@ -15,6 +15,7 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
@@ -41,15 +42,13 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    },
-    "Microsoft.AspNetCore.Authentication.Facebook": "1.0.0",
-    "BundlerMinifier.Core": "2.2.281",
-    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
+    }
   },
 
   "tools": {
+    "BundlerMinifier.Core": "2.0.238",
     "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final",
     "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final",
     "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final",
     "Microsoft.VisualStudio.Web.CodeGeneration.Tools": {
