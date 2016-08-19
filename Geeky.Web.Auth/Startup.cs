@@ -58,6 +58,9 @@ namespace Geeky.Web.Auth
             {
                 options.Filters.Add(new RequireHttpsAttribute());
             });
+
+            services.AddSwaggerGen();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,6 +84,9 @@ namespace Geeky.Web.Auth
 
             app.UseIdentity();
 
+            app.UseSwagger();
+            app.UseSwaggerUi();
+
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
             app.UseFacebookAuthentication(new FacebookOptions()
             {
@@ -91,6 +97,9 @@ namespace Geeky.Web.Auth
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "api",
+                    template: "api/{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

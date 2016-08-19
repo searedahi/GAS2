@@ -11,16 +11,18 @@ namespace Geeky.Web.Auth.Test
         {
 
             var wc = new WebClient();
-            byte[] resultBytes = {};
+            //byte[] resultBytes = {};
+            var resultBytes = "";
 
             using (wc)
             {
-                resultBytes = wc.DownloadData("https://localhost:44364/");
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                resultBytes = wc.DownloadString("https://localhost:44364/api/home");
             }
 
             Assert.IsNotNull(wc);
             Assert.IsNotNull(resultBytes);
-
         }
     }
 }
