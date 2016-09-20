@@ -73,7 +73,7 @@ namespace Geeky.Web.Auth
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
+                app.UseBrowserLink();                
             }
             else
             {
@@ -97,9 +97,6 @@ namespace Geeky.Web.Auth
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "api",
-                    template: "api/{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
